@@ -6,35 +6,29 @@ define(['jquery',
     var Router = Backbone.Router.extend({
         routes: {
             '': 'index',
-            'test': 'chris'
+            'test': 'test'
         },
 
-        /*
-            These are the 'routes' for webpay
-        */
         index: function() {
             var _this = this;
-            //alert('index route has fired!')
+        
             this.loadView('views/dashboard');
         },
 
-        /*
-            End of 'routes' section
-        */
 
 
-        loadView: function(theView, options) {
+        loadView: function(targetView, options) {
 
             var def = $.Deferred(),
                 _this = this;
 
             var options = $.extend({
-                el: '#container-equipmentManagement'
+                el: '#appContainer'
             }, options);
 
-            require([theView], function(appView) {
+            require([targetView], function(appView) {
 
-                _this.theApp = new appView(options);
+                _this.app = new appView(options);
                 def.resolve();
             });
 

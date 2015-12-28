@@ -14,5 +14,5 @@ define(['jquery',
 	})
     
     //usually returning the object you created...
-    return new Dashboard()
+    return Dashboard;
 });
