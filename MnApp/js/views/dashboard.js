@@ -1,13 +1,14 @@
-define(['jquery', 
-		'underscore', 
-		'backbone',
+define(['mn',
 		'collections/newsCollection',
 		'text!templates/dashboard.html'
-], function($, _, Backbone,BaseView,collection,template) {
-	var Dashboard = BaseView.extend({
+], function(Mn,collection,template) {
+	var Dashboard = Mn.ItemView.extend({
+		template:template,
 		initialize:function(){
+			var _this = this;
 			collection.fetch().done(function(response){
 				console.log(response);
+				_this.render()
 			})
 		}
 	})

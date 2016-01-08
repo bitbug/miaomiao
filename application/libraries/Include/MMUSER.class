@@ -1,0 +1,110 @@
+<?php
+
+//---------------------------------------------------------------------------------------------------------EMPLOYEE CLASS --------------------------------------------------------------------------------------------------------------------------------------------
+
+CLASS MMUSER {
+    /*
+      To add an instanciated variable:
+      1)place an item in the top private section.
+      2)Call it fromthe database  after a secure connection has occured.
+      3)Write it into the Array for future use in the session.
+      4)Add it to the 'Collect Values' section so that it can be instanciated via the session variable.
+
+     */
+
+    //Declare the Variables for a MMUSER
+    private $username;
+    private $password;
+    public $ip;
+    public $browser;
+    private $error;
+    private $activeSession;
+    public $role;
+
+    //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    //Construct a new WEBPAYUSER on page load.
+    public function __construct($package) {
+
+        //Depackage the Username/Password
+        $this->username = $package['UserName'];
+
+        if (array_key_exists('ActiveSession', $package)) {
+            $this->activeSession = $package['ActiveSession'];
+        }
+
+
+        //Get the server variables
+        $this->ip = $_SERVER['REMOTE_ADDR'];
+        $this->browser = $_SERVER['HTTP_USER_AGENT'];
+
+        if (!$this->username) {
+            $this->error .= '没有用户名';
+        }
+
+        //If this session is not active then login, otherwise just collect the extra variables from the system.
+        if ($this->activeSession == 'false' or !$this->activeSession) {
+            //Only need password if the session is not active, in which case you can only get a password from the login itself.
+            $this->password = $package['PassWord'];
+            $this->login();
+        } else {
+            $this->collectValues($package);
+        }
+    }
+
+    //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    private function returnErrors() {
+        echo $this->error;
+    }
+
+    //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+    private function collectValues($UserPackage) {
+
+        $this->role = $UserPackage['Role'];      
+        if (array_key_exists('overrideClient', $UserPackage)) {
+            $this->overrideClient = $UserPackage['overrideClient'];
+        } else {
+            $this->overrideClient = '';
+        }
+    }
+
+    //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    public function resolve() {
+
+        if (!$this->error || $this->error == '') {
+            //Redirect them to the correct page.
+
+            /*
+              <script type="text/javascript">
+              <!--
+              // window.location = "<?php echo WEBPAYUSER::Redirect; ?>"
+              //-->
+              </script>
+             */
+        } else {
+            $this->returnErrors();
+        }
+    }
+
+    public static function ci_login($Row) {
+        
+                //Load the variables from the database.
+                $this->role = $Row['Role'];                
+
+                //Set the Session Variables for this User in the Package Array for future initalizations.
+                $_SESSION['package'] = array(
+                    'UserName' => $this->username,
+                    'ActiveSession' => 'true',
+                    'Role' => $this->role                    
+                );
+        
+        $_SESSION['CACHE'] = array();
+    }
+
+
+}
+
+?>
