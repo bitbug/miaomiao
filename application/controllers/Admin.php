@@ -14,7 +14,6 @@ class Admin extends CI_Controller {
 
     //Main landing page for... everything
     public function index(){
-
         $this->load->view('home/dashboard');
     }
 

@@ -14,4 +14,12 @@ class usermodel extends CI_Model {
                 $query = $this->db->get();
                 return $query->result_array();
         }
+
+        public function getUserInfo($data){
+                $this->db->where($data);
+                $this->db->from('e_entity');
+
+                $query=$this->db->get();
+                return $query->result_array();
+        }
 }

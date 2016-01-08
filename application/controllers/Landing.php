@@ -31,8 +31,9 @@
     //@@Main landing page
     public function index(){
         //load the login view
-        $data["last_url"]=$this->last_url;      
+        $data["last_url"]=$this->last_url; 
         $this->load->view('home/login',$data);
+          
     }
     
 
@@ -71,11 +72,12 @@
 
         $_SESSION["LastLoginAttempt"] = time();
 
-        if(sizeof($attempt)>0){
+
+        if(sizeof($attempt)>0&&$attempt[0]["Role"]==1){
             $this->createPackage($attempt[0]);
-            $result = array("message"=>"ok");
             header("Content-Type: application/json", true, 200);
-            exit(json_encode($result));
+            exit(json_encode($attempt[0]));
+
         }else{
             header("Content-Type: text/plain", true, 400);
             exit("密码或用户名错误");
@@ -88,7 +90,8 @@
             "UserName"=>$r["UserName"],
             "ActiveSession"=>'true',
             "Id"=>$r["Id"],
-            "Role"=>$r["Role"]
+            "Role"=>$r["Role"],
+            "TimeStamp"=>time()
         );
     }
 }

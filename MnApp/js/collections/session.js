@@ -6,7 +6,7 @@ define(['jquery',
 	var NewsCollection = Backbone.Collection.extend({
 
 		model:sessionModel,
-		url:'index.php/Landing/getSession'
+		url:'../User/user'
 
 	})
     

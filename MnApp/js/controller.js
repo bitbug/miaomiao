@@ -1,6 +1,7 @@
 define(['mn',
-	    'views/login'
-	   ], function(Mn,LoginView) {
+	    'views/login',
+	    'views/dashboard'
+	   ], function(Mn,LoginView,dashboard) {
 
 	var Controller = Mn.Controller.extend({
 		dashboard:function(){

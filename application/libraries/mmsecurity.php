@@ -20,15 +20,19 @@ class mmsecurity {
         if ($lUp == 'none'):
             //If this user is logged in then create a new class based on that user for this page.  Globally this user will always be 'Webpayuser' so its easy to get items
             if (array_key_exists('package', $_SESSION)):
-                $this->MMUSER = new MMUSER($_SESSION['package']);
+                    $this->MMUSER = new MMUSER($_SESSION['package']);        
             else:
                 $this->killUserSession();
             endif;
+
         else:
             MMUSER::CI_Login($location['row']);
         endif;
     }
-
+    public function getMmUser(){
+        session_write_close();
+        return $this->MMUSER;
+    }
     public function killUserSession(){
         session_unset();
         if(strpos($_SERVER['HTTP_ACCEPT'], 'json') === false){

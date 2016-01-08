@@ -7,7 +7,7 @@ define(['mn',
         initialize:function(){
             var _this = this;
             sessionCollection.fetch().done(function(response){
-                console.log(response)
+                console.log(sessionCollection)
             })
         },
         controller:controller,

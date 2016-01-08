@@ -7,7 +7,7 @@ define(['jquery',
 	var Dashboard = BaseView.extend({
 		initialize:function(){
 			collection.fetch().done(function(response){
-				console.log(response);
+				console.log(collection)
 			})
 		}
 	})

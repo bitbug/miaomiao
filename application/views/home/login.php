@@ -5,7 +5,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui" />
         
-        <link rel="stylesheet" type="text/css" href="MnApp/css/bootstrap-3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="/miaomiao/MnApp/css/bootstrap-3.2.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="MnApp/js/lib/alertify/alertify.css">
         <link rel="stylesheet" href="MnApp/js/lib/alertify/alertify.bootstrap.css">
         <link rel="stylesheet" type="text/css" href="MnApp/css/font-awesome.css">

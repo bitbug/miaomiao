@@ -15,6 +15,7 @@ CLASS MMUSER {
     //Declare the Variables for a MMUSER
     private $username;
     private $password;
+    private $id;
     public $ip;
     public $browser;
     private $error;
@@ -62,7 +63,8 @@ CLASS MMUSER {
 
     private function collectValues($UserPackage) {
 
-        $this->role = $UserPackage['Role'];      
+        $this->role = $UserPackage['Role'];
+        $this->id = $UserPackage["Id"];      
         if (array_key_exists('overrideClient', $UserPackage)) {
             $this->overrideClient = $UserPackage['overrideClient'];
         } else {
@@ -98,7 +100,8 @@ CLASS MMUSER {
                 $_SESSION['package'] = array(
                     'UserName' => $this->username,
                     'ActiveSession' => 'true',
-                    'Role' => $this->role                    
+                    'Role' => $this->role,
+                    'Id' => $this->id                    
                 );
         
         $_SESSION['CACHE'] = array();
