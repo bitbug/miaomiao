@@ -211,7 +211,7 @@ define([
         this.addRegions({
             AppRegion:"#appContainer"
         });
-        this.Router = new appRouter();
+        Router = new appRouter();
         Backbone.history.start();
 
 

@@ -3,7 +3,7 @@ define(['jquery',
 		'backbone',
 		'models/session'
 ], function($, _, Backbone,sessionModel) {
-	var NewsCollection = Backbone.Collection.extend({
+	var SessionCollection = Backbone.Collection.extend({
 
 		model:sessionModel,
 		url:'../User/user'
@@ -11,5 +11,5 @@ define(['jquery',
 	})
     
     //usually returning the object you created...
-    return new NewsCollection()
+    return new SessionCollection()
 });

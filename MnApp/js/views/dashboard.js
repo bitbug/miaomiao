@@ -1,18 +1,12 @@
 define(['mn',
-		'collections/newsCollection',
-		'text!templates/dashboard.html'
-], function(Mn,collection,template) {
-	var Dashboard = Mn.ItemView.extend({
-		template:template,
-		initialize:function(){
-			var _this = this;
-			collection.fetch().done(function(response){
-				console.log(response);
-				_this.render()
-			})
-		}
-	})
-    
+    'text!templates/dashboard.html'
+], function(Mn, template) {
+    var Dashboard = Mn.ItemView.extend({
+        initialize: function(option) {
+            console.log(Router.admin)
+        }
+    })
+
     //usually returning the object you created...
     return Dashboard;
 });
