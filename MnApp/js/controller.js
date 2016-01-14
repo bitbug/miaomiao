@@ -3,33 +3,33 @@ define(['mn',
 ], function(Mn, sessionModel) {
 
     var Controller = Mn.Controller.extend({
+
         index: function() {
             this.loadApp('views/dashboard')
         },
-        loadStage: function() {
-            var def = $.Deferred(),
-                _this = this;
-
-            sessionModel.fetch().done(function() {
-                _this.admin = sessionModel;
+        setStage: function() {
+            var def = $.Deferred();
+            $.when(this.loadView('views/header', {
+                el: "#header"
+            }), this.loadView("views/menu", {
+                el: "#menu"
+            })).done(function() {
                 def.resolve()
-            }).fail(function() {
-                def.reject()
             })
-
-            return def.promise()
+            return def
         },
+
         loadApp: function(view, option) {
             var def = $.Deferred(),
                 _this = this;
 
-            this.loadStage().done(function() {
-                // option = $.extend({
-                //     admin: _this.admin
-                // }, option);
-
-                def.notify();
-            });
+            if (this.admin) {
+                def.notify()
+            } else {
+                Router.getAdmin().done(function() {
+                    def.notify();
+                });
+            }
 
             def.progress(function() {
                 _this.loadView(view, option).done(function() {
@@ -41,7 +41,9 @@ define(['mn',
         loadView: function(viewLink, option) {
             var def = $.Deferred(),
                 _this = this;
-
+            if (option["el"] === undefined) {
+                option["el"] = "#mainView"
+            }
             require([viewLink], function(view) {
                 App.AppRegion.show(new view(option));
                 def.resolve();
@@ -51,5 +53,5 @@ define(['mn',
         }
     })
 
-    return new Controller()
+    return Controller
 });

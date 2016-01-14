@@ -23,8 +23,11 @@
     </head>
     <body>
         <div id="appContainer" class="container-fluid">
-
-
+            <header id="header" class="navbar navbar-static-top"></header>
+            <div>
+                <div id="menu"></div>
+                <div id="mainView"></div>
+            </div>
         </div>
       <!--  <script data-main="App/js/main" src="App/js/require/require.min.js"></script>-->
       <script data-main="<?=base_url().'MnApp/js/main'?>" src="<?=base_url().'MnApp/js/require/require.min.js'?>"></script>

@@ -9,10 +9,10 @@ define([
     'backbone',
     'mn',
     'router',
-], function($,_,Backbone,Mn,appRouter) {
+], function($, _, Backbone, Mn, appRouter) {
     var Application = Mn.Application.extend({
-        initialize:function(){
-               //global functions....
+        initialize: function() {
+            //global functions....
             nextEventLoop = function(func, context) {
                 var context = context || this;
 
@@ -68,7 +68,7 @@ define([
                         s_ = toLong ? this.substr(0, n - 1) : this;
                     s_ = useWordBoundary && toLong ? s_.substr(0, s_.lastIndexOf(' ')) : s_;
                     return toLong ? s_ + '&hellip;' : s_;
-            };
+                };
 
             // capitalize a string (this is too cool = This Is Too Cool)
             // usage: str.capitalize();
@@ -196,22 +196,23 @@ define([
             });
 
 
-            $(document).ready(function(){
+            $(document).ready(function() {
                 var windowHeight = $(window).height();
                 $("body").height(windowHeight)
             })
-            
+
         },
     });
-    
+
     var App = new Application();
 
-    App.on("start",function(){
+    App.on("start", function() {
 
         this.addRegions({
-            AppRegion:"#appContainer"
+            AppRegion: "#appContainer"
         });
         Router = new appRouter();
+
         Backbone.history.start();
 
 
