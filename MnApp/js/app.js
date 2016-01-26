@@ -4,13 +4,15 @@
 */
 
 define([
-    'jquery',
-    'underscore',
-    'backbone',
     'mn',
     'router',
-], function($, _, Backbone, Mn, appRouter) {
+    'controller',
+    'rootLayout'
+], function(Mn, appRouter,controller,RootLayout) {
     var Application = Mn.Application.extend({
+        setRootLayout: function () {
+            this.root = new RootLayout();
+        },
         initialize: function() {
             //global functions....
             nextEventLoop = function(func, context) {
@@ -191,9 +193,9 @@ define([
             };
 
             //disable link clicks, we want backbone to handle these
-            $(document).on('click', '[href]:not([follow])', function(e) {
-                e.preventDefault();
-            });
+            // $(document).on('click', '[href]:not([follow])', function(e) {
+            //     e.preventDefault();
+            // });
 
 
             $(document).ready(function() {
@@ -205,15 +207,19 @@ define([
     });
 
     var App = new Application();
-
+    App.on('before:start', function () {
+        App.setRootLayout();
+    });
     App.on("start", function() {
-
-        this.addRegions({
-            AppRegion: "#appContainer"
+        var controller = new Controller();
+        App.router = new Router({
+            controller: controller
         });
-        Router = new appRouter();
-
-        Backbone.history.start();
+        App.controller = controller;
+        App.controller.start();
+        if( ! Backbone.History.started){
+            Backbone.history.start();
+        } 
 
 
     })

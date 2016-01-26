@@ -2,9 +2,9 @@ define(['mn',
     'text!templates/dashboard.html'
 ], function(Mn, template) {
     var Dashboard = Mn.ItemView.extend({
-        initialize: function(option) {
-            console.log(Router.admin)
-        }
+    	template:function(){
+    		return _.template(template)
+    	}
     })
 
     //usually returning the object you created...

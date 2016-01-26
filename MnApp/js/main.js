@@ -9,13 +9,15 @@ require.config({
         jquery: 'js/lib/jquery',
         underscore: 'js/lib/loDash',
         backbone: 'js/lib/backbone',
-        wreqr:'js/lib/backbone.wreqr',
-        babysitter:'js/lib/backbone.babysitter',
         mn:'js/lib/backbone.marionette',
         bootstrap: 'js/lib/bootstrap-3.2.0/js/bootstrap.min',
         templates: 'templates',
         controller:"js/controller",
-        //application: 'js/application/application',
+        footable:"js/lib/footable/footable",
+        footableFilter:"js/lib/footable/footable.filter",
+        footableSort:"js/lib/footable/footable.sort",
+        footablePaginate:"js/lb/footable/footable.paginate",
+        rootLayout:"js/rootLayout",
         router: 'js/router',
         views: 'js/views',
         text: 'js/text',
@@ -32,6 +34,9 @@ require.config({
         // mdModal: 'js/objects/mdModal/js/mdModal'
     },
     shim: {
+        'footable':{
+            'deps':['footableSort','footableFilter','footablePaginate']
+        },
         'bootstrap': {
             'deps': ['jquery']
         },
@@ -41,8 +46,8 @@ require.config({
         'BSDatePicker': {
             'deps': ['bootstrap']
         },
-        'marionette':{
-            'deps':['jquery','underscore','backbone','wreqr','babysitter']
+        'mn':{
+            'deps':['jquery','underscore','backbone']
         }
     },
 

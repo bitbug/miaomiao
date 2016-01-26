@@ -1,0 +1,91 @@
+<link href="/miaomiao/MnApp/css/table/footable.core.css?v=2-0-1" rel="stylesheet" type="text/css">
+<link href="/miaomiao/MnApp/css/table/footable.standalone.css" rel="stylesheet" type="text/css">
+<link href="/miaomiao/MnApp/css/table/footable-demos.css" rel="stylesheet" type="text/css">
+
+<link rel="stylesheet" href="/miaomiao/MnApp/css/table/DT_bootstrap.css">
+<link rel="stylesheet" href="/miaomiao/MnApp/css/table/datatables.responsive.css">
+
+
+<div class="content-wrap">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="nest" id="FilteringClose">
+                <div class="title-alt">
+                    <h6>出售信息</h6>
+                    <div class="titleClose">
+                        <a class="gone" href="#FilteringClose">
+                            <span class="entypo-cancel"></span>
+                        </a>
+                    </div>
+                    <div class="titleToggle">
+                        <a class="nav-toggle-alt" href="#Filtering">
+                            <span class="entypo-up-open"></span>
+                        </a>
+                    </div>
+
+                </div>
+
+                <div class="body-nest" id="Filtering">
+
+                    <div class="row" style="margin-bottom:10px;">
+                        <div class="col-sm-4">
+                            <input class="form-control" id="filter" placeholder="Search..." type="text">
+                        </div>
+                        <div class="col-sm-2">
+                            <select class="filter-status form-control">
+                                <option value="active">Active
+                                <option value="disabled">Disabled
+                                <option value="suspended">Suspended
+                            </select>
+                        </div>
+                        <div class="col-sm-6">
+
+                            <a href="#clear" style="margin-left:10px;" class="pull-right btn btn-info clear-filter" title="clear filter">clear</a>
+                            <a href="#api" class="pull-right btn btn-info filter-api" title="Filter using the Filter API">filter API</a>
+
+
+
+                        </div>
+
+                    </div>
+
+                    <table id="sellingTable" class="demo table" data-filter="#filter" data-filter-text-only="true">
+                        <thead>
+                            <tr>
+                                <th data-toggle="true">
+                                    ID
+                                </th>
+                                <th>
+                                    品名
+                                </th>
+                                <th data-hide="phone,tablet">
+                                    数量
+                                </th>
+                                <th data-hide="phone,tablet">
+                                    单位
+                                </th>
+                                <th data-hide="phone">
+                                    价格
+                                </th>
+                                <th>
+                                	地点
+                                </th>
+                                <th>
+                                	创建日期
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody id="dataBody">
+                          
+                        </tbody>
+                    </table>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+</div>

@@ -26,7 +26,7 @@
         <div id="loginView">
             <form action="" id="loginForm">
                 <div class="form-group">
-                    <label for="userName">用户名</label>
+                    <label for="userName" style="color:#fff">用户名</label>
 
                     <div>
                         <input type="text" class="form-control" id="userName" name="UserName">
@@ -34,20 +34,21 @@
                     
                 </div>
                 <div class="form-group">
-                    <label for="passWord">密码</label>
+                    <label for="passWord" style="color:#fff">密码</label>
 
                     <div >
                         <input type="password" class="form-control" id="passWord" name="PassWord">
                     </div>
 
                 </div>
-                <button type="submit" class="btn btn-primary" id="loginBtn">登陆</button>
+                <button type="submit" class="btn btn-primary" id="loginBtn" style="background-color:#3071a9">登陆</button>
             </form>
         <input type="text" style="display:none" id="last_url" value="<?php echo $last_url;?>"/>
         </div>
         </div>
         <script src="MnApp/js/lib/jquery.js"></script>
         <script src="MnApp/js/lib/bootstrap-3.2.0/js/bootstrap.min.js"></script>
+        <script src="MnApp/js/lib/bootstrap-3.2.0/js/bootstrap.js"></script>
         <script src="MnApp/js/lib/alertify/alertify.min.js"></script>
         <script src="MnApp/js/login/login.js"></script>
     </body>

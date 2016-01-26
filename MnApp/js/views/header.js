@@ -5,7 +5,7 @@ define(['mn',
         template: function() {
             var _this = this;
             return _.template(template, {
-                data: Router.admin
+                admin: App.admin
             })
         }
 

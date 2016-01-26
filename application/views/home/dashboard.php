@@ -5,7 +5,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui" />
         
-        <link rel="stylesheet" type="text/css" href="<?= base_url().'MnApp/css/bootstrap-3.2.0/css/bootstrap.min.css'?>">
+        <link rel="stylesheet" type="text/css" href="<?= base_url().'MnApp/css/bootstrap-3.2.0/css/bootstrap.css'?>">
         
         <link rel="stylesheet" type="text/css" href="<?=base_url().'MnApp/css/bootstrapOverrides.css'?>">
         <link rel="stylesheet" type="text/css" href="<?=base_url().'MnApp/css/font-awesome.css'?>">
@@ -26,7 +26,46 @@
             <header id="header" class="navbar navbar-static-top"></header>
             <div>
                 <div id="menu"></div>
-                <div id="mainView"></div>
+                <div id="mainPanel"class="wrap-fluid">
+                    <div class="container-fluid paper-wrap bevel tlbr">
+                    <!-- CONTENT -->
+                    <!--TITLE -->
+                    <div class="row">
+                        <div id="paper-top">
+                            <div class="col-lg-3">
+                                <h2 class="tittle-content-header">
+                                    <i class="icon-window"></i> 
+                                    <span>控制面板
+                                    </span>
+                                </h2>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!--/ TITLE -->
+
+                    <!-- BREADCRUMB -->
+                    <ul id="breadcrumb">
+                        <li>
+                            <span class="entypo-home"></span>
+                        </li>
+                        <li><i class="fa fa-lg fa-angle-right"></i>
+                        </li>
+                        <li><a href="#" title="Sample page 1">首页</a>
+                        </li>
+                        <li><i class="fa fa-lg fa-angle-right"></i>
+                        </li>
+                        <li><a href="#" title="Sample page 1">控制面板</a>
+                        </li>
+                    </ul>
+                    <div class="content-wrap" id="main">
+
+
+                    </div>
+                        <!-- / END OF FOOTER -->
+                    </div>
+                </div>
+                </div>
             </div>
         </div>
       <!--  <script data-main="App/js/main" src="App/js/require/require.min.js"></script>-->
