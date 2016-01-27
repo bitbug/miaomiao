@@ -13,10 +13,6 @@ require.config({
         bootstrap: 'js/lib/bootstrap-3.2.0/js/bootstrap.min',
         templates: 'templates',
         controller:"js/controller",
-        footable:"js/lib/footable/footable",
-        footableFilter:"js/lib/footable/footable.filter",
-        footableSort:"js/lib/footable/footable.sort",
-        footablePaginate:"js/lb/footable/footable.paginate",
         rootLayout:"js/rootLayout",
         router: 'js/router',
         views: 'js/views',
@@ -34,9 +30,6 @@ require.config({
         // mdModal: 'js/objects/mdModal/js/mdModal'
     },
     shim: {
-        'footable':{
-            'deps':['footableSort','footableFilter','footablePaginate']
-        },
         'bootstrap': {
             'deps': ['jquery']
         },

@@ -3,69 +3,72 @@ define(['mn',
     'views/header',
     'views/menu',
     'views/dashboard'
-], function(Mn,sessionModel,HeaderView,MenuView,DashboardView) {
+], function(Mn, sessionModel, HeaderView, MenuView, DashboardView) {
     Controller = Backbone.Marionette.Object.extend({
-        views:[],
-        initialize: function () {
+        views: [],
+        initialize: function() {
             this.admin = sessionModel
         },
 
         // Start the app by showing the appropriate views
         // and fetching the list of todo items, if there are any
-        start: function () {
+        start: function() {
             var _this = this
-            this.admin.fetch().done(function(){
+            this.admin.fetch().done(function() {
                 App.admin = _this.admin
                 _this.showHeader();
                 _this.showMenu();
                 _this.showDashboard();
-                
+
             });
         },
-        showHeader: function () {
+        showHeader: function() {
             App.root.showChildView('header', new HeaderView());
         },
-        showMenu:function(){
-            App.root.showChildView('menu',new MenuView())
+        showMenu: function() {
+            App.root.showChildView('menu', new MenuView())
         },
-        showDashboard:function(){
-            App.root.showChildView('main',new DashboardView())
+        showDashboard: function() {
+            App.root.showChildView('main', new DashboardView())
         },
-        showTradingList:function(option){
+        showTradingList: function(option) {
             var _this = this;
-            this.loadCollection("collections/trading/selling").done(function(){
-                option = {collection:_this.collection}
-                _this.loadMainView("views/trading/sellingAppView",option)
+            this.loadCollection("collections/trading/selling").done(function() {
+                option = {
+                    collection: _this.collection
+                }
+                _this.loadMainView("views/trading/sellingAppView", option)
             })
         },
-        showBuyingList:function(option){
+
+        showBuyingList: function(option) {
             var _this = this;
-            this.loadCollection("colleciton/trading/buying").done(function(){
-                _this.loadMainView("views/trading/buyingAppView",option)
+            this.loadCollection("colleciton/trading/buying").done(function() {
+                _this.loadMainView("views/trading/buyingAppView", option)
             })
         },
-        showQuotingList:function(option){
+        showQuotingList: function(option) {
             var _this = this;
-            this.loadCollection("colleciton/trading/quoting").done(function(){
-                _this.loadMainView("views/trading/quotingAppView",option)
+            this.loadCollection("colleciton/trading/quoting").done(function() {
+                _this.loadMainView("views/trading/quotingAppView", option)
             })
         },
-        loadCollection:function(link){
+        loadCollection: function(link) {
             var _this = this,
                 def = $.Deferred();
-            require([link],function(collection){
-                collection.fetch().done(function(){
+            require([link], function(collection) {
+                collection.fetch().done(function() {
                     _this.collection = collection
                     def.resolve()
-                }).fail(function(){
+                }).fail(function() {
                     def.reject()
                 })
             })
             return def.promise()
         },
-        loadMainView:function(link,option){
-            require([link],function(view){
-            App.root.main.show(new view(option));
+        loadMainView: function(link, option) {
+            require([link], function(view) {
+                App.root.main.show(new view(option));
             })
         },
     });

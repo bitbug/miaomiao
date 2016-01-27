@@ -3,9 +3,10 @@ define(['mn',
 ], function(Mn,template) {
     var SellingItemView = Mn.ItemView.extend({
         tagName: 'tr',
+        className:'item',
         template:function(model){
             return _.template(template,{model:model})
-        },
+        }
     })
 
     //usually returning the object you created...
