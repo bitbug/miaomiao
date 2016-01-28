@@ -6,14 +6,17 @@ require.config({
     baseUrl: 'http://localhost:8888/miaomiao/MnApp/',
     waitSeconds: 60,
     paths: {
+        alertify: 'js/lib/alertify/alertify.min',
         jquery: 'js/lib/jquery',
         underscore: 'js/lib/loDash',
         backbone: 'js/lib/backbone',
-        mn:'js/lib/backbone.marionette',
+        mn: 'js/lib/backbone.marionette',
+        moment:'js/lib/moment/moment',
+        mdModal: 'js/views/mdModal',
         bootstrap: 'js/lib/bootstrap-3.2.0/js/bootstrap.min',
         templates: 'templates',
-        controller:"js/controller",
-        rootLayout:"js/rootLayout",
+        controller: "js/controller",
+        rootLayout: "js/rootLayout",
         router: 'js/router',
         views: 'js/views',
         text: 'js/text',
@@ -39,8 +42,8 @@ require.config({
         'BSDatePicker': {
             'deps': ['bootstrap']
         },
-        'mn':{
-            'deps':['jquery','underscore','backbone']
+        'mn': {
+            'deps': ['jquery', 'underscore', 'backbone']
         }
     },
 

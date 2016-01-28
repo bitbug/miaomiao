@@ -7,7 +7,10 @@ define(['mn',
         childView: itemView,
         childViewContainer: "#dataBody",
         initialize: function(option) {
+            var _this = this
             this.fullCollection = option.collection.toJSON()
+            console.log(this.fullCollection)
+            this.listenTo(this.collection,"change",this.render)
         },
         template: function() {
             return _.template(template)
@@ -33,7 +36,7 @@ define(['mn',
                 this.collection.reset(this.fullCollection);
             }
 
-        }, 1000)
+        }, 500)
     })
 
     //usually returning the object you created...

@@ -10,9 +10,14 @@ class productmodel extends CI_Model {
         public function getSellingList($data){
                 $this->db->where($data);
                 $this->db->from('e_listing');
+                $this->db->join('e_entity','e_entity.Id = e_listing.UserCreated');
 
                 $query = $this->db->get();
                 return $query->result_array();
         }
-
+        public function updateSellingItem($data,$Id){
+                $this->db->where("Id",$Id);
+                $this->db->update("e_listing",$data);
+                return "ok";
+        }       
 }

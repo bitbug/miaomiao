@@ -109,16 +109,19 @@ a:hover {
     position: relative;
     top: -3px;
 }
-#menu{
-    width:25%;
-    position:absolute;
-    left:0px;
-}
-#mainPanel{
+
+#menu {
+    width: 25%;
     position: absolute;
-    right:20px;
-    width:73%;
+    left: 0px;
 }
+
+#mainPanel {
+    position: absolute;
+    right: 20px;
+    width: 73%;
+}
+
 
 /**
  * BOOTSRAP COUSTOM
@@ -187,22 +190,27 @@ a:hover {
 .navbar-inner {
     min-height: 60px!important;
 }
-#skin-select h3, #skin-select h4 {
-}
+
+#skin-select h3,
+#skin-select h4 {}
+
 .menu-left-nest {
     background: none repeat scroll 0 0 rgba(0, 0, 0, 0.1);
     border-radius: 3px;
 }
+
 #menu-showhide {
     background: none repeat scroll 0 0 rgba(0, 0, 0, 0.1);
     border-radius: 3px;
 }
+
 #skin-select {
     height: auto;
     position: absolute;
     top: -21px;
     z-index: 1000;
 }
+
 #skin-select #toggle {
     /*  background: url("img/style-toggle.png") no-repeat scroll -5px -5px  rgba(0, 0, 0, 0.4);*/
     background: none repeat scroll 0 0 rgba(0, 0, 0, 0.3);
@@ -219,9 +227,11 @@ a:hover {
     width: 30px;
     font-size: 14px;
 }
+
 #skin-select #toggle:hover {
     background: none repeat scroll 0 0 rgba(0, 0, 0, 0.8);
 }
+
 #skin-select #toggle.active {
     background-position: -5px -45px;
     height: 30px;
@@ -231,6 +241,7 @@ a:hover {
     width: 30px;
     border-radius: 3px;
 }
+
 #skin-select li {
     font-size: 20px;
     line-height: 0;
@@ -240,17 +251,21 @@ a:hover {
     color: #FFFFFF;
     /*  border-top: 1px solid rgba(0,0,0,0.2);  */
 }
+
 #skin-select li span {
-        font-size: 14px; 
+    font-size: 14px;
     left: 10px;
     position: relative;
 }
+
 .menu-hide span {
     color: red;
 }
+
 #skin-select li ul li {
     line-height: 20px;
 }
+
 #skin-select li i {
     font-size: 18px;
     font-style: normal;
@@ -258,8 +273,9 @@ a:hover {
     line-height: 15px;
     position: relative;
     width: 20px;
-    top:5px;
+    top: 5px;
 }
+
 #skin-select li li i {
     display: inline-block;
     font-size: 18px;
@@ -268,8 +284,10 @@ a:hover {
     line-height: 15px;
     position: relative;
     width: 23px;
-    top:2px;
+    top: 2px;
 }
+
+
 /* #skin-select ul { margin:0; padding:0; list-style:none; }
 #skin-select ul li { display:inline-block; margin-right:1px; margin-bottom:4px; }
 #skin-select ul li a { padding: 4px 6px; font-family:Tahoma, "Times New Roman", Times, serif; font-size:11px; text-shadow:none; color:#000; background:#eee; border:1px solid rgba(0,0,0,.2) }
@@ -280,24 +298,30 @@ a:hover {
 #skin-select .colors a { display:block; width:4px; height:6px; line-height:100%; border:1px solid rgba(0,0,0,.2); }
 #skin-select .colors a:hover { outline:2px solid #ccc; }
  */
- .skin-part {
+
+.skin-part {
     padding: 0;
     position: relative;
     top: 0;
 }
+
 .skin-part h3 {
-    color:#000;
-    text-shadow:none;
-    margin-bottom:10px;
+    color: #000;
+    text-shadow: none;
+    margin-bottom: 10px;
 }
+
 .skin-part h3 small {
-    margin-left:6px;
-    color:#999;
+    margin-left: 6px;
+    color: #999;
 }
+
 .skin-part h4 {
-    font-size:1em;
-    margin:4px 0!important;
+    font-size: 1em;
+    margin: 4px 0!important;
 }
+
+
 /*@media screen and (max-height: 800px) {
     #skin-select {
         top: 0px;
@@ -308,9 +332,11 @@ a:hover {
         top: 0px;
     }
 }*/
- .title-leftmenu {
+
+.title-leftmenu {
     padding: 10px;
 }
+
 .title-menu-left {
     /*       background: none repeat scroll 0 0 rgba(0, 0, 0, 0.15); 
     border-bottom: 1px solid rgba(0, 0, 0, 0.15);
@@ -325,13 +351,16 @@ a:hover {
     text-transform: uppercase !important;
     width: 100%;
 }
+
 .title-menu-left:hover {
     background: transparent!important;
 }
+
 .title-menu-left:hover:after {
     display: none!important;
-    border-left:4px solid transparent!important;
+    border-left: 4px solid transparent!important;
 }
+
 .title-menu-left span {
     background: none repeat scroll 0 0 rgba(0, 0, 0, 0.2);
     border-radius: 20px;
@@ -339,23 +368,29 @@ a:hover {
     line-height: 20px;
     padding: 0 11px;
 }
+
 .config-wrap {
     margin: 0 -12px 0 0;
 }
+
 .config-wrap[title]:hover:after {
     font-size: 9px!important;
 }
+
 .widget-menu:before {
-    content:"交易信息管理" !important;
+    content: "交易信息管理" !important;
 }
+
 .design-kit:before {
-    content:"用户管理" !important;
+    content: "用户管理" !important;
 }
+
 .component:before {
-    content:"平台设置" !important;
+    content: "平台设置" !important;
 }
-.content:before{
-    content:"内容管理" !important;
+
+.content:before {
+    content: "内容管理" !important;
 }
 
 .dropdown-menu > li > a:hover,
@@ -552,7 +587,6 @@ a:hover {
 
 .btn {
     border-color: #c7d5e0!important;
-    background: #FFFFFF;
     display: inline-block;
     padding: 6px 12px !important;
     margin-bottom: 0;
@@ -3345,7 +3379,7 @@ b#speed {
     background-size: 50% 50%;
     background-repeat: no-repeat;
     padding: 20px;
-/*    min-height: 1430px;*/
+    /*    min-height: 1430px;*/
 }
 
 .bevel.tlbr {

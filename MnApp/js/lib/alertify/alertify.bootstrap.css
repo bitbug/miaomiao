@@ -24,6 +24,9 @@
 	}
 		.alertify-message {
 			padding: 15px;
+			font-size:1.3em;
+			color:#999999;
+			font-weight:600;
 			margin: 0;
 		}
 		.alertify-text-wrapper {

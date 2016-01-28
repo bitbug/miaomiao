@@ -9,6 +9,8 @@
         
         <link rel="stylesheet" type="text/css" href="<?=base_url().'MnApp/css/bootstrapOverrides.css'?>">
         <link rel="stylesheet" type="text/css" href="<?=base_url().'MnApp/css/font-awesome.css'?>">
+        <link rel="stylesheet" href="<?=base_url().'MnApp/js/lib/alertify/alertify.css'?>">
+        <link rel="stylesheet" href="<?=base_url().'MnApp/js/lib/alertify/alertify.bootstrap.css'?>">
         <link rel="stylesheet" type="text/css" href="<?=base_url().'MnApp/css/animate.css'?>">
         <link rel="stylesheet" type="text/css" href="<?=base_url().'MnApp/css/miaomiao.css'?>">
 
@@ -16,9 +18,6 @@
         <!-- Add your own css file for equipment app here -->
 
     
-
-        <!-- Google Fonts...-->
-        <link href='//fonts.googleapis.com/css?family=Roboto:300,700,900|Oswald:400,300,700' rel='stylesheet' type='text/css'>
 
     </head>
     <body>

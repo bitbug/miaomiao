@@ -13,7 +13,7 @@ define(['jquery',
 
             //construct the search set
             this.each(function(model) {
-                searchSet[model.cid] = model.get("Id") + model.get("Name") + model.get("Quant") + model.get("Unit") + model.get("Price") + model.get("Location") + model.get("DateCreated")
+                searchSet[model.cid] = model.get("Id") +model.get("UserName")+ model.get("Name") + model.get("Unit") + model.get("Location") + model.get("DateCreated")
             });
 
             //loop through the searchSet,for each pair of data:

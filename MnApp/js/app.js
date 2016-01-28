@@ -7,10 +7,11 @@ define([
     'mn',
     'router',
     'controller',
+    'mdModal',
     'rootLayout'
-], function(Mn, appRouter,controller,RootLayout) {
+], function(Mn, appRouter, controller, mdModal, RootLayout) {
     var Application = Mn.Application.extend({
-        setRootLayout: function () {
+        setRootLayout: function() {
             this.root = new RootLayout();
         },
         initialize: function() {
@@ -207,7 +208,7 @@ define([
     });
 
     var App = new Application();
-    App.on('before:start', function () {
+    App.on('before:start', function() {
         App.setRootLayout();
     });
     App.on("start", function() {
@@ -216,10 +217,11 @@ define([
             controller: controller
         });
         App.controller = controller;
+        App.modal = new mdModal();
         App.controller.start();
-        if( ! Backbone.History.started){
+        if (!Backbone.History.started) {
             Backbone.history.start();
-        } 
+        }
 
 
     })

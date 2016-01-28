@@ -1,0 +1,43 @@
+<form action="" class="container-fluid" id="itemForm">
+    <div class="row">
+        <div class="from-group col-md-6 col-sm-6">
+            <label for="">品名</label>
+            <input name="Name" class="form-control" type="text" value="<%=model.get('Name')%>">
+        </div>
+        <div class="form-group col-md-6 col-sm-6">
+            <label for="">数量</label>
+            <input name="Quant" class="form-control" type="number" value="<%=model.get('Quant')%>">
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-md-6 col-sm-6">
+            <label for="">单位</label>
+            <input name="Unit" class="form-control" type="text" value="<%=model.get('Unit')%>">
+        </div>
+        <div class="form-group col-md-6 col-sm-6">
+            <label for="">价格</label>
+            <div class="input-group">
+                <input name="Price" class="form-control" type="number" value="<%=model.get('Price')%>">
+                <span class="input-group-addon">元</span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-md-12 col-sm-12">
+            <label for="">地点</label>
+            <input name="Location" class="form-control" type="text" value="<%=model.get('Location')%>">
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-md-12 col-sm-12">
+            <label for="">详情描述</label>
+            <textarea name="Description" id="" rows="3" style="width:100%;border-radius:4px;border:1px solid"><%=model.get("Description")%></textarea>
+        </div>
+    </div>
+    <div class="row" style="margin-bottom:10px">
+        <button type="submit" id="change" class="btn btn-primary col-md-12 col-sm-12">保存修改</button>
+    </div>
+    <div class="row">
+        <button id="delete" class="btn btn-danger col-md-12 col-sm-12">删除记录</button>
+    </div>
+</form>
