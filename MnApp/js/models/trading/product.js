@@ -4,7 +4,7 @@ define(['jquery',
 ], function($, _, Backbone) {
     var SellingModel = Backbone.Model.extend({
 
-        idAttribute: "Id"
+    idAttribute: "ProductId"
     })
 
     //usually returning the object you created...

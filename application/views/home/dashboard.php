@@ -32,11 +32,11 @@
                     <div class="row">
                         <div id="paper-top">
                             <div class="col-lg-3">
-                                <h2 class="tittle-content-header">
+                                <h5 class="tittle-content-header">
                                     <i class="icon-window"></i> 
-                                    <span>控制面板
+                                    <span>
                                     </span>
-                                </h2>
+                                </h5>
 
                             </div>
                         </div>
@@ -45,17 +45,14 @@
 
                     <!-- BREADCRUMB -->
                     <ul id="breadcrumb">
-                        <li>
-                            <span class="entypo-home"></span>
-                        </li>
-                        <li><i class="fa fa-lg fa-angle-right"></i>
+<!--                         <li><i class="fa fa-lg fa-angle-right"></i>
                         </li>
                         <li><a href="#" title="Sample page 1">首页</a>
                         </li>
                         <li><i class="fa fa-lg fa-angle-right"></i>
                         </li>
                         <li><a href="#" title="Sample page 1">控制面板</a>
-                        </li>
+                        </li> -->
                     </ul>
                     <div class="content-wrap" id="main">
 

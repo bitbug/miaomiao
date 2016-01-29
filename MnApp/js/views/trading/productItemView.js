@@ -1,7 +1,7 @@
 define(['mn',
-    'text!templates/trading/sellingItem.html'
+    'text!templates/trading/productItem.html'
 ], function(Mn, template) {
-    var SellingItemView = Mn.ItemView.extend({
+    var ProductItemView = Mn.ItemView.extend({
         tagName: "tr",
         className: "item",
         events: {
@@ -29,5 +29,5 @@ define(['mn',
     })
 
     //usually returning the object you created...
-    return SellingItemView;
+    return ProductItemView;
 });

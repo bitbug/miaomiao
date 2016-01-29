@@ -6,7 +6,6 @@ define(['mn',
     var ItemDetailView = Backbone.View.extend({
         initialize: function(option) {
             this.model = option.model;
-            console.log(this.model)
             this.render()
         },
         render: function() {

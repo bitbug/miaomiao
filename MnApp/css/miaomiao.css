@@ -378,9 +378,11 @@ a:hover {
 }
 
 .widget-menu:before {
-    content: "交易信息管理" !important;
+    content: "树苗交易" !important;
 }
-
+.garden-menu:before{
+    content: "园艺资材" !important;
+}
 .design-kit:before {
     content: "用户管理" !important;
 }

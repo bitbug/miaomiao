@@ -31,33 +31,53 @@ define(['mn',
         showDashboard: function() {
             App.root.showChildView('main', new DashboardView())
         },
-        showTradingList: function(option) {
+        showProductList:function(des,filter){
             var _this = this;
-            this.loadCollection("collections/trading/selling").done(function() {
-                option = {
-                    collection: _this.collection
-                }
-                _this.loadMainView("views/trading/sellingAppView", option)
+            this.loadCollection("collections/trading/product",{
+                "Type":filter,
+                "ProductType":des
+            }).done(function(){
+                option={
+                    collection:_this.collection
+                };
+                _this.loadMainView("views/trading/productAppView",option)
             })
         },
+        // showTradingList: function(option) {
+        //     var _this = this;
+        //     this.loadCollection("collections/trading/product",{"Type":"selling","ProductType":"seedling"}).done(function() {
+        //         option = {
+        //             collection: _this.collection
+        //         }
+        //         _this.loadMainView("views/trading/productAppView", option)
+        //     })
+        // },
 
-        showBuyingList: function(option) {
-            var _this = this;
-            this.loadCollection("colleciton/trading/buying").done(function() {
-                _this.loadMainView("views/trading/buyingAppView", option)
-            })
-        },
-        showQuotingList: function(option) {
-            var _this = this;
-            this.loadCollection("colleciton/trading/quoting").done(function() {
-                _this.loadMainView("views/trading/quotingAppView", option)
-            })
-        },
-        loadCollection: function(link) {
+        // showBuyingList: function(option) {
+        //     var _this = this;
+        //     this.loadCollection("collections/trading/product",{"Type":"buying","ProductType":"seedling"}).done(function() {
+        //         option = {
+        //             collection:_this.collection
+        //         }
+        //         _this.loadMainView("views/trading/productAppView", option)
+        //     })
+        // },
+        // showQuotingList: function(option) {
+        //     var _this = this;
+        //     this.loadCollection("collections/trading/product",{"Type":"quoting","ProductType":"seedling"}).done(function() {
+        //         option = {
+        //             collection:_this.collection
+        //         }
+        //         _this.loadMainView("views/trading/productAppView", option)
+        //     })
+        // },
+        loadCollection: function(link,option) {
             var _this = this,
                 def = $.Deferred();
             require([link], function(collection) {
-                collection.fetch().done(function() {
+                collection.fetch({
+                    data:$.param(option)
+                }).done(function() {
                     _this.collection = collection
                     def.resolve()
                 }).fail(function() {
@@ -70,7 +90,8 @@ define(['mn',
             require([link], function(view) {
                 App.root.main.show(new view(option));
             })
-        },
+        }
+
     });
 
     // var Controller = Mn.Controller.extend({

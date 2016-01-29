@@ -15,8 +15,18 @@ define(['mn',
                 "click @ui.des":"routeTo"
         },
         routeTo:function(e){
-            var des = $(e.currentTarget).data("des");
-            App.router.navigate(des,{trigger:true});
+            var des = $(e.currentTarget).data("des"),
+                filter = $(e.currentTarget).data("filter");
+            switch(des){
+                case "dashboard":
+                    App.router.navigate("dashboard",{trigger:true});
+                break;
+                case "garden":
+                case "seedling":
+                    App.router.navigate("?des="+des+"?filter="+filter,{trigger:true});
+                break;
+                    
+            }
 
         }
 

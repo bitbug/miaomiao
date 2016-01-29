@@ -10,6 +10,7 @@ require.config({
         jquery: 'js/lib/jquery',
         underscore: 'js/lib/loDash',
         backbone: 'js/lib/backbone',
+        fuse:'js/lib/fuse/fuse.min',
         mn: 'js/lib/backbone.marionette',
         moment:'js/lib/moment/moment',
         mdModal: 'js/views/mdModal',

@@ -8,9 +8,15 @@ class Products extends REST_Controller {
                 $this->load->model('productmodel');
                 $this->load->helper('url_helper');
         }
-        public function sellingListing_get(){
-                $data = array("Type"=>"selling","DateVoid"=>NULL);
-                $result = $this->productmodel->getSellingList($data);
+        public function productListing_get(){
+                $Type = $this->get("Type");
+                $ProductType = $this->get("ProductType");
+
+                $data = array("Type"=>$Type,
+                              "ProductType"=>$ProductType,
+                              "DateVoid"=>NULL);
+
+                $result = $this->productmodel->getProductList($data);
 
                 if($result){
                         $this->response($result,200);
@@ -18,8 +24,8 @@ class Products extends REST_Controller {
                         $this->response(array("message"=>"no result"),204);
                 }
         }
-        public function sellingListing_put(){
-                $Id = $this->put("Id");
+        public function productListing_put(){
+                $Id = $this->put("ProductId");
                 $Name = $this->put("Name");
                 $Quant = $this->put("Quant");
                 $Unit = $this->put("Unit");
@@ -36,7 +42,7 @@ class Products extends REST_Controller {
                         "Description"=>$Description,
                         "DateVoid"=>$DateVoid
                         );
-                $result = $this->productmodel->updateSellingItem($data,$Id);
+                $result = $this->productmodel->updateProductItem($data,$Id);
                 if($result){
                         $this->response($result,200);
                 }else{

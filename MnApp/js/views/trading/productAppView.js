@@ -1,15 +1,14 @@
 define(['mn',
-    'views/trading/sellingItemView',
-    'text!templates/trading/selling.html',
+    'views/trading/productItemView',
+    'text!templates/trading/product.html',
 ], function(Mn, itemView, template) {
 
-    var SellingAppView = Mn.CompositeView.extend({
+    var ProductAppView = Mn.CompositeView.extend({
         childView: itemView,
         childViewContainer: "#dataBody",
         initialize: function(option) {
-            var _this = this
-            this.fullCollection = option.collection.toJSON()
-            console.log(this.fullCollection)
+            var _this = this;
+            this.fullCollection = option.collection.toJSON();
             this.listenTo(this.collection,"change",this.render)
         },
         template: function() {
@@ -40,5 +39,5 @@ define(['mn',
     })
 
     //usually returning the object you created...
-    return SellingAppView;
+    return ProductAppView;
 });

@@ -3,10 +3,30 @@ define(['mn',
     Router = Backbone.Marionette.AppRouter.extend({
         appRoutes: {
             "dashboard":"showDashboard",
-            "selling":"showTradingList",
-            "buying":"showBuyingList",
-            "quoting":"showQuotingList"
+            "?des=:des?filter=:filter":"showProductList"
         },
+        onRoute:function(name,path,arguments){
+            var _this = this
+                breadList = '';
+            arguments.forEach(function(seg){
+                if(seg){
+                    seg = _this.parseCh(seg);              
+                    item="<li><i class='fa fa-lg fa-angle-right'></i></li><li><a title='"+seg+"'>"+seg+"</a></li>";
+                    breadList+=item
+                }
+            })
+            $("#breadcrumb").html(breadList)
+        },
+        parseCh:function(phrase){
+            var enToCh={
+                "seedling":"树苗交易",
+                "garden":"园艺资材",
+                "selling":"供应",
+                "buying":"求购",
+                "quoting":"报价"
+            };
+            return enToCh[phrase];
+        }
     });
 
     // var Router = Mn.AppRouter.extend({
