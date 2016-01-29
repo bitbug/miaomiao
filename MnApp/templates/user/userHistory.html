@@ -1,0 +1,20 @@
+<table class="table" id="userHistory">
+	<thead>
+		<th>名称</th>
+		<th>价格</th>
+		<th>产品类型</th>
+		<th>信息类型</th>
+		<th>发布日期</th>
+	</thead>
+	<tbody>
+		<%_.each(collection,function(model){%>
+			<tr>
+				<th><%=model.Name%></th>
+				<th><%=model.Price%></th>
+				<th><%=parseCh(model.ProductType)%></th>
+				<th><%=parseCh(model.Type)%></th>
+				<th><%=model.ProductDateCreated%></th>
+			</tr>
+		<%})%>
+	</tbody>
+</table>

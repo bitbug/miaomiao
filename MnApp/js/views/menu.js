@@ -25,6 +25,9 @@ define(['mn',
                 case "seedling":
                     App.router.navigate("?des="+des+"?filter="+filter,{trigger:true});
                 break;
+                case "userInfo":
+                    App.router.navigate("users",{trigger:true});
+                break;
                     
             }
 

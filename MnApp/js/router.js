@@ -3,7 +3,8 @@ define(['mn',
     Router = Backbone.Marionette.AppRouter.extend({
         appRoutes: {
             "dashboard":"showDashboard",
-            "?des=:des?filter=:filter":"showProductList"
+            "?des=:des?filter=:filter":"showProductList",
+            "users":"showUserList"
         },
         onRoute:function(name,path,arguments){
             var _this = this

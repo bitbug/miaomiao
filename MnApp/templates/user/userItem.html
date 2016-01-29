@@ -1,0 +1,26 @@
+<td data-toggle="true">
+    <%=model.WechatID%>
+</td>
+<td>
+    <%=model.UserName%>
+</td>
+<td>
+  <%=model.RealName%>
+</td>
+<td>
+    <%=model.PhoneNumber%>
+</td>
+<td>
+    <%=model.RoleName%>
+</td>
+<td>
+   	<%=model.DateCreated%>
+</td>
+<td>
+  <a class="checkHistory">查看记录</a>
+</td>
+<td>
+	<%if(model.Level>2){%>	
+    	<a  class="postInfo">发布信息</a>
+	<%}%>
+</td>

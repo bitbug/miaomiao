@@ -19,5 +19,12 @@ class productmodel extends CI_Model {
                 $this->db->where("ProductId",$Id);
                 $this->db->update("e_listing",$data);
                 return "ok";
-        }       
+        }
+        public function getProductsByUser($filter){
+                $this->db->where($filter);
+                $this->db->from('e_listing');
+
+                $query = $this->db->get();
+                return $query->result_array();
+        }     
 }

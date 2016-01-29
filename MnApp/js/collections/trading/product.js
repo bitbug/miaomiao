@@ -7,14 +7,6 @@ define(['jquery',
     var SellingCollection = Backbone.Collection.extend({
         model: sellingModel,
         url: '../Products/productListing',
-        // fuzzySearch:function(query){
-        //     var colJSON = this.toJSON(),
-        //         keys = ["UserName","Name","ProductId","Unit","Price","Location","Quant","ProductDateCreated"],
-        //         fuse = new Fuse(colJSON,{keys:keys}),
-        //         result = fuse.search(query);
-        //     return result;
-
-        // },
         fuzzySearch:function(query){
             var initData = this.toJSON(),
                 keys = ["UserName","Name","ProductId","Unit","Price","Location","Quant","ProductDateCreated"],
@@ -24,12 +16,12 @@ define(['jquery',
 
             for(var i=0;i<queryArr.length;i++){
                 fuse = new Fuse(initData,{keys:keys});
+
                 if(queryArr[i]!=""){
                     result = fuse.search(queryArr[i]);                   
                 }
                 initData = result;
             }
-            console.log(result)
             return result
         },
 

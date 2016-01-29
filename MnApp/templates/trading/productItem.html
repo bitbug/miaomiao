@@ -2,7 +2,7 @@
 	<%=model.ProductId%>
 </td>
 <td>
-    <%=model.UserName%>
+	<%=(model.RealName=="")? model.UserName:model.RealName%>
 </td>
 <td>
     <%=model.Name%>

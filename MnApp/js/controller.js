@@ -43,37 +43,18 @@ define(['mn',
                 _this.loadMainView("views/trading/productAppView",option)
             })
         },
-        // showTradingList: function(option) {
-        //     var _this = this;
-        //     this.loadCollection("collections/trading/product",{"Type":"selling","ProductType":"seedling"}).done(function() {
-        //         option = {
-        //             collection: _this.collection
-        //         }
-        //         _this.loadMainView("views/trading/productAppView", option)
-        //     })
-        // },
+        showUserList:function(){
+            var _this = this;
+            this.loadCollection("collections/user/userList").done(function(){
+                _this.loadMainView('views/user/userAppView',{collection:_this.collection})
+            })
+        },
 
-        // showBuyingList: function(option) {
-        //     var _this = this;
-        //     this.loadCollection("collections/trading/product",{"Type":"buying","ProductType":"seedling"}).done(function() {
-        //         option = {
-        //             collection:_this.collection
-        //         }
-        //         _this.loadMainView("views/trading/productAppView", option)
-        //     })
-        // },
-        // showQuotingList: function(option) {
-        //     var _this = this;
-        //     this.loadCollection("collections/trading/product",{"Type":"quoting","ProductType":"seedling"}).done(function() {
-        //         option = {
-        //             collection:_this.collection
-        //         }
-        //         _this.loadMainView("views/trading/productAppView", option)
-        //     })
-        // },
         loadCollection: function(link,option) {
             var _this = this,
                 def = $.Deferred();
+
+            option || (option = {});
             require([link], function(collection) {
                 collection.fetch({
                     data:$.param(option)
@@ -87,63 +68,14 @@ define(['mn',
             return def.promise()
         },
         loadMainView: function(link, option) {
+            option || (option = {});
+
             require([link], function(view) {
                 App.root.main.show(new view(option));
             })
         }
 
     });
-
-    // var Controller = Mn.Controller.extend({
-
-    //     index: function() {
-    //         this.loadApp('views/dashboard')
-    //     },
-    //     setStage: function() {
-    //         var def = $.Deferred();
-    //         $.when(this.loadView('views/header', {
-    //             el: "#header"
-    //         }), this.loadView("views/menu", {
-    //             el: "#menu"
-    //         })).done(function() {
-    //             def.resolve()
-    //         })
-    //         return def
-    //     },
-
-    //     loadApp: function(view, option) {
-    //         var def = $.Deferred(),
-    //             _this = this;
-
-    //         if (this.admin) {
-    //             def.notify()
-    //         } else {
-    //             Router.getAdmin().done(function() {
-    //                 def.notify();
-    //             });
-    //         }
-
-    //         def.progress(function() {
-    //             _this.loadView(view, option).done(function() {
-    //                 def.resolve();
-    //             });
-    //         })
-    //         return def.promise()
-    //     },
-    //     loadView: function(viewLink, option) {
-    //         var def = $.Deferred(),
-    //             _this = this;
-    //         if (option["el"] === undefined) {
-    //             option["el"] = "#mainView"
-    //         }
-    //         require([viewLink], function(view) {
-    //             App.AppRegion.show(new view(option));
-    //             def.resolve();
-    //         });
-
-    //         return def.promise()
-    //     }
-    // })
 
     return Controller
 });

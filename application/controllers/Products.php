@@ -50,4 +50,17 @@ class Products extends REST_Controller {
                 }
 
         }
+        public function productsByUser_get(){
+            $filter = array(
+                "UserCreated"=>$this->get("UserCreated"),
+                "DateVoid"=>null
+                );
+            $result = $this->productmodel->getProductsByUser($filter);
+            if($result){
+                $this->response($result,200);
+            }else{
+                $this->response(array("message"=>"no result"),204);
+            }
+
+        }
 }

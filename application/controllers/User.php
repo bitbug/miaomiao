@@ -34,6 +34,45 @@ class User extends REST_Controller {
                     $this->response(array(), 200);    
                 }
         }
+        public function userList_get(){
+            $data=array(
+                "UserDateVoid"=>NULL,
+                "Role"=>0
+                );
+            $this->load->model("usermodel");
+            $result = $this->usermodel->getUserList($data);
+
+            if($result){
+                $this->response($result,200);
+            }else{
+                $this->response(array(),200);
+            }
+        }
+        public function userList_put(){
+            $Id = $this->put("Id");
+            $RealName = $this->put("RealName");
+            $Membership = $this->put("Membership");
+            $PhoneNumber = $this->put("PhoneNumber");
+            $Email = $this->put("Email");
+            $Address = $this->put("Address");
+            $UserDateVoid = $this->put("UserDateVoid");
+            $data=array(
+                "RealName"=>$RealName,
+                "Membership"=>$Membership,
+                "PhoneNumber"=>$PhoneNumber,
+                "Email"=>$Email,
+                "Address"=>$Address,
+                "UserDateVoid"=>$UserDateVoid
+                );
+            $this->load->model("usermodel");
+            $result = $this->usermodel->updateUser($data,$Id);
+            if($result){
+                $this->response($result,200);
+            }else{
+                $this->response(array(),200);
+            }
+
+        }
         private function get_client_ip() {
             $ipaddress = '';
             if (getenv('HTTP_CLIENT_IP'))
