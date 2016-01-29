@@ -6,7 +6,12 @@ class productmodel extends CI_Model {
                 parent::__construct();
                 $this->load->database();
         }
+        public function createProduct($data){
+                $this->db->insert('e_listing',$data);
+                $query = $this->db->insert_id();
 
+                return $query;
+        }
         public function getProductList($data){
                 $this->db->where($data);
                 $this->db->from('e_listing');

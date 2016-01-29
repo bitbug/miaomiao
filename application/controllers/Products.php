@@ -8,6 +8,28 @@ class Products extends REST_Controller {
                 $this->load->model('productmodel');
                 $this->load->helper('url_helper');
         }
+        public function product_post(){
+            $data=array(
+                "Description"=>$this->post("Description"),
+                "Location"=>$this->post("Location"),
+                "Name"=> $this->post("Name"),
+                "Price"=> $this->post("Price"),
+                "ProductType"=> $this->post("ProductType"),
+                "Quant"=> $this->post("Quant"),
+                "Type"=>$this->post("Type"),
+                "Unit"=> $this->post("Unit"),
+                "ProductDateCreated"=>$this->post("ProductDateCreated"),
+                "UserCreated"=>$this->post("UserCreated")
+                );
+            $result = $this->productmodel->createProduct($data);
+            if($result){
+                $this->response($result,200);
+            }else{
+                $this->response(array("message"=>"no result"),204);
+            }
+
+                
+        }
         public function productListing_get(){
                 $Type = $this->get("Type");
                 $ProductType = $this->get("ProductType");
