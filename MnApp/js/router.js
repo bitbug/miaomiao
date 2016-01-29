@@ -3,13 +3,14 @@ define(['mn',
     Router = Backbone.Marionette.AppRouter.extend({
         appRoutes: {
             "dashboard":"showDashboard",
-            "?des=:des?filter=:filter":"showProductList",
+            "trading/?des=:des?filter=:filter":"showProductList",
+            "membership":"showSetting",
             "users":"showUserList"
         },
-        onRoute:function(name,path,arguments){
+        onRoute:function(name,path,param){
             var _this = this
                 breadList = '';
-            arguments.forEach(function(seg){
+            param.forEach(function(seg){
                 if(seg){
                     seg = _this.parseCh(seg);              
                     item="<li><i class='fa fa-lg fa-angle-right'></i></li><li><a title='"+seg+"'>"+seg+"</a></li>";
@@ -24,7 +25,10 @@ define(['mn',
                 "garden":"园艺资材",
                 "selling":"供应",
                 "buying":"求购",
-                "quoting":"报价"
+                "quoting":"报价",
+                "setting":"平台设置",
+                "membership":"会员制度",
+                "payment":"支付信息"
             };
             return enToCh[phrase];
         }

@@ -37,7 +37,7 @@ define(['mn',
                 "Type":filter,
                 "ProductType":des
             }).done(function(){
-                option={
+                var option={
                     collection:_this.collection
                 };
                 _this.loadMainView("views/trading/productAppView",option)
@@ -49,7 +49,15 @@ define(['mn',
                 _this.loadMainView('views/user/userAppView',{collection:_this.collection})
             })
         },
-
+        showSetting:function(){
+            var _this = this;
+            this.loadCollection('collections/setting/membership').done(function(){
+                var option = {
+                    collection:_this.collection
+                }
+                _this.loadMainView('views/setting/settingAppView',option)
+            })
+        },
         loadCollection: function(link,option) {
             var _this = this,
                 def = $.Deferred();
