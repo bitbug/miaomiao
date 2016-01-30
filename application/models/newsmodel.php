@@ -20,4 +20,10 @@ class newsmodel extends CI_Model {
                 $this->db->update("news",$data);
                 return "ok";
         }
+        public function createNews($data){
+                $this->db->insert('news',$data);
+                $query = $this->db->insert_id();
+
+                return $query;
+        }
 }

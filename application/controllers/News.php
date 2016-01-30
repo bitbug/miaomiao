@@ -36,4 +36,21 @@ class News extends REST_Controller {
                 $this->response(array("message"=>"no result"),204);
             }
         }
+        public function articleList_post(){
+            $data=array(
+                "Title"=>$this->post("Title"), 
+                "Slug"=>$this->post("Slug"), 
+                "Content"=>$this->post("Content"), 
+                "Author"=>$this->post("Author"), 
+                "ArticleDateCreated"=>$this->post("ArticleDateCreated")
+                );
+            $result = $this->newsmodel->createNews($data);
+            if($result){
+                $this->response($result,200);
+            }else{
+                $this->response(array("message"=>"no result"),204);
+            }
+
+                
+        }
 }

@@ -17,10 +17,17 @@ define(['mn',
         },
         ui: {
             searchInput: "#searchBox",
-            searchButton: "#searchButton"
+            newButton: "#newArticle"
         },
         events: {
-            "keyup @ui.searchInput": "runSearch"
+            "keyup @ui.searchInput": "runSearch",
+            "click @ui.newButton":"createArticle"
+        },
+        createArticle:function(){
+            App.modal.show("views/article/newArticle",{
+                title:"新文章",
+                collection:this.collection
+            })
         },
         runSearch: _.debounce(function() {
             var _this = this,
