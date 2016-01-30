@@ -3069,11 +3069,12 @@ img.sidebar-icon {
     position: relative;
     text-align: center;
     color: #FF6B6B;
+    padding-bottom: 20px
 }
 
 .profit .value span {
-    font-size: 60px;
-    margin-right: 10px;
+    font-size: 30px;
+    margin-right: 20px;
     position: relative;
     top: 0px;
 }
@@ -3095,7 +3096,7 @@ img.sidebar-icon {
 }
 
 .profit .value i {
-    font-size: 27px;
+    font-size: 40px;
     font-style: normal;
     letter-spacing: 0;
     margin: 0 0 0 10px;
@@ -3163,7 +3164,7 @@ img.sidebar-icon {
 }
 
 .revenue .value span {
-    font-size: 25px;
+    font-size: 30px;
     margin-right: 5px;
     position: relative;
     top: -20px;
@@ -3174,7 +3175,7 @@ img.sidebar-icon {
 }
 
 .revenue .value i {
-    font-size: 27px;
+    font-size: 40px;
     font-style: normal;
     letter-spacing: -1px;
     margin: 40px 20px 0 0;
@@ -3236,11 +3237,13 @@ b#speed {
     position: relative;
     text-align: center;
     color: #45B6B0;
+    padding-bottom: 20px;
+    top:20px;
 }
 
 .order .value span {
-    font-size: 25px;
-    margin-right: 5px;
+    font-size: 30px;
+    margin-right: 20px;
     position: relative;
     top: -20px;
 }
@@ -3250,7 +3253,7 @@ b#speed {
 }
 
 .order .value i {
-    font-size: 27px;
+    font-size: 40px;
     font-style: normal;
     letter-spacing: -1px;
     margin: 0 0 0 10px;
@@ -3309,11 +3312,13 @@ b#speed {
     position: relative;
     text-align: center;
     color: #65C3DF;
+    top:20px;
+    padding-bottom: 20px
 }
 
 .member .value span {
-    font-size: 25px;
-    margin-right: 5px;
+    font-size: 30px;
+    margin-right: 20px;
     position: relative;
     top: -20px;
 }
@@ -3333,7 +3338,7 @@ b#speed {
 }
 
 .member .value i {
-    font-size: 27px;
+    font-size: 40px;
     font-style: normal;
     letter-spacing: -1px;
     margin: 0 0 0 10px;

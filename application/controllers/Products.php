@@ -31,12 +31,17 @@ class Products extends REST_Controller {
                 
         }
         public function productListing_get(){
-                $Type = $this->get("Type");
-                $ProductType = $this->get("ProductType");
+                if($this->get("Type")&&$this->get("ProductType")){
 
-                $data = array("Type"=>$Type,
-                              "ProductType"=>$ProductType,
-                              "DateVoid"=>NULL);
+                    $Type = $this->get("Type");
+                    $ProductType = $this->get("ProductType");
+
+                    $data = array("Type"=>$Type,
+                                  "ProductType"=>$ProductType,
+                                  "DateVoid"=>NULL);
+                }else{
+                    $data = array("DateVoid"=>NULL);
+                }
 
                 $result = $this->productmodel->getProductList($data);
 
