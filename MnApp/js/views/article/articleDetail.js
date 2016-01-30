@@ -1,9 +1,9 @@
 define(['mn',
-    'text!templates/trading/itemDetail.html',
+    'text!templates/article/articleDetail.html',
     'alertify',
     'moment'
 ], function(Mn, template, alertify,moment) {
-    var ItemDetailView = Backbone.View.extend({
+    var ArticleDetail = Backbone.View.extend({
         initialize: function(option) {
             this.model = option.model;
             this.render()
@@ -28,8 +28,9 @@ define(['mn',
             e.preventDefault();
             var _this = this,
                 formData = $("#itemForm").serializeObject();
+
             _.extend(formData,{
-                "DateVoid":moment().format()
+                "ArticleDateVoid":moment().format()
             });
 
             alertify.confirm("删除的条目不可找回，确定删除？",function(e){
@@ -38,6 +39,8 @@ define(['mn',
                         App.modal.close();
                         alertify.alert("删除成功");
                     }})
+                }else{
+                    console.log("cancled")
                 }
             })
         },
@@ -48,5 +51,5 @@ define(['mn',
     })
 
     //usually returning the object you created...
-    return ItemDetailView;
+    return ArticleDetail;
 });

@@ -29,7 +29,11 @@ define(['mn',
                     App.router.navigate("users",{trigger:true});
                 break;
                 case "membership":
-                    App.router.navigate("membership",{trigger:true})
+                    App.router.navigate("membership",{trigger:true});
+                break;
+                case "article":
+                    App.router.navigate("article",{trigger:true});
+                break;
                     
             }
 

@@ -58,6 +58,15 @@ define(['mn',
                 _this.loadMainView('views/setting/settingAppView',option)
             })
         },
+        showArticle:function(){
+            var _this = this;
+            this.loadCollection('collections/article/newsCollection').done(function(){
+                var option = {
+                    collection:_this.collection
+                }
+                _this.loadMainView('views/article/articleAppView',option)
+            })
+        },
         loadCollection: function(link,option) {
             var _this = this,
                 def = $.Deferred();

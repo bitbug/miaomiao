@@ -1,21 +1,23 @@
 define(['mn',
-    'views/trading/productItemView',
-    'text!templates/trading/product.html',
+    'views/article/articleItem',
+    'text!templates/article/article.html',
 ], function(Mn, itemView, template) {
 
-    var ProductAppView = Mn.CompositeView.extend({
-        childView: itemView,
-        childViewContainer: "#dataBody",
+    var ArticleAppView = Mn.CompositeView.extend({
+        childView:itemView,
+        childViewContainer:"#articleBody",
         initialize: function(option) {
             var _this = this;
             this.fullCollection = option.collection.toJSON();
-            this.listenTo(this.collection,"change",this.render)
+            this.listenTo(this.collection,"change",this.render);
+
         },
         template: function() {
             return _.template(template)
         },
         ui: {
             searchInput: "#searchBox",
+            searchButton: "#searchButton"
         },
         events: {
             "keyup @ui.searchInput": "runSearch"
@@ -38,5 +40,5 @@ define(['mn',
     })
 
     //usually returning the object you created...
-    return ProductAppView;
+    return ArticleAppView;
 });

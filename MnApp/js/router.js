@@ -5,7 +5,8 @@ define(['mn',
             "dashboard":"showDashboard",
             "trading/?des=:des?filter=:filter":"showProductList",
             "membership":"showSetting",
-            "users":"showUserList"
+            "users":"showUserList",
+            "article":"showArticle"
         },
         onRoute:function(name,path,param){
             var _this = this

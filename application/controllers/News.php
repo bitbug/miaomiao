@@ -8,24 +8,32 @@ class News extends REST_Controller {
                 $this->load->model('newsmodel');
                 $this->load->helper('url_helper');
         }
-        public function getAllNews_get(){
-                $slug = ($this->get('slug'))?$this->get('slug'):FALSE;
+        public function articleList_get(){
 
-                $result = $this->newsmodel->get_news($slug);
+                $filter=array(
+                        "ArticleDateVoid"=>NULL
+                        );
+                $result = $this->newsmodel->getAllArticle($filter);
 
                 if($result){
                         $this->response($result,200);
                 }else{
-                        $this->response(array("message"=>"no result"),204);
+                        $this->response(array(),204);
                 }
         }
-        // public function index()
-        // {
-        //         $data['news'] = $this->news_model->get_news();
-        // }
-
-        // public function view($slug = NULL)
-        // {
-        //         $data['news_item'] = $this->news_model->get_news($slug);
-        // }
+        public function articleList_put(){
+                $data=array(
+                "Title"=>$this->put("Title"), 
+                "Slug"=> $this->put("Slug"), 
+                "Content"=>$this->put("Content"),
+                "ArticleDateVoid"=>$this->put("ArticleDateVoid")
+                );
+                $ArticleId = $this->put("ArticleId");
+            $result = $this->newsmodel->updateArticle($data,$ArticleId);
+            if($result){
+                $this->response($result,200);
+            }else{
+                $this->response(array("message"=>"no result"),204);
+            }
+        }
 }

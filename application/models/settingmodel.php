@@ -11,7 +11,7 @@ class settingmodel extends CI_Model {
                 return $query->result_array();
         }
         public function updateMembershipSetting($data,$Level){
-        		$this->db->where("Level",$Level);
+        	$this->db->where("Level",$Level);
                 $this->db->update("t_membership",$data);
                 return "ok";
         }
