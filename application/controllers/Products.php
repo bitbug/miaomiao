@@ -6,6 +6,7 @@ class Products extends REST_Controller {
         {
                 parent::__construct();
                 $this->load->model('productmodel');
+                $this->load->library('mmsecurity');
                 $this->load->helper('url_helper');
         }
         public function product_post(){
@@ -90,4 +91,51 @@ class Products extends REST_Controller {
             }
 
         }
+        public function productPhoto_get(){
+            $FileType = $this->get("FileType");
+            $ProductId = $this->get("ProductId");
+
+            $result = $this->productmodel->getProductPhoto($FileType,$ProductId);
+            if($result){
+                $this->response($result,200);
+            }else{
+                $this->response(array(),204);
+            }
+        }
+        public function productPhoto_post(){
+
+        $ProductId = $this->post('ProductId');
+        $FileType = $this->post('FileType');
+        $UserId = $this->post('UserId');
+    
+        $this->load->helper('form');
+        $filepath = 'uploaded/' . '/'.$UserId.'/' . '/'.$FileType. '/' . $ProductId. '/';
+         if (!is_dir($filepath)):
+            mkdir($filepath, 0775, TRUE);
+        endif;
+
+        $config['upload_path'] = $filepath;
+        $config['allowed_types'] = 'gif|jpg|png|tiff|bmp|pdf';
+        $config['max_size'] = '5000';
+
+        $this->load->library('upload', $config);
+
+        if (!$this->upload->do_upload()):
+            $error = array('error' => $this->upload->display_errors());
+        endif;
+
+        $fData = $this->upload->data();
+        $filename = $fData['file_name'];
+        $filepath .= $fData['file_name'];
+
+
+        $return = $this->productmodel->addFile($UserId, $ProductId, $filepath, $filename, $FileType);
+
+        if($return){
+            $this->response($return, 200);
+        } else{
+            $this->response('No Results', 200);
+        }
+        
+    }
 }

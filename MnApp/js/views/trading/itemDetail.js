@@ -2,7 +2,7 @@ define(['mn',
     'text!templates/trading/itemDetail.html',
     'alertify',
     'moment'
-], function(Mn, template, alertify,moment) {
+], function(Mn, template, alertify, moment) {
     var ItemDetailView = Backbone.View.extend({
         initialize: function(option) {
             this.model = option.model;
@@ -28,22 +28,25 @@ define(['mn',
             e.preventDefault();
             var _this = this,
                 formData = $("#itemForm").serializeObject();
-            _.extend(formData,{
-                "DateVoid":moment().format()
+            _.extend(formData, {
+                "DateVoid": moment().format()
             });
 
-            alertify.confirm("删除的条目不可找回，确定删除？",function(e){
-                if(e){
-                    _this.model.save(formData,{wait:true,success:function(){
-                        App.modal.close();
-                        alertify.alert("删除成功");
-                    }})
+            alertify.confirm("删除的条目不可找回，确定删除？", function(e) {
+                if (e) {
+                    _this.model.save(formData, {
+                        wait: true,
+                        success: function() {
+                            App.modal.close();
+                            alertify.alert("删除成功");
+                        }
+                    })
                 }
             })
         },
         events: {
             "click #change": "changeRecord",
-            "click #delete": "deleteRecord"
+            "click #delete": "deleteRecord",
         }
     })
 

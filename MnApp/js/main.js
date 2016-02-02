@@ -6,20 +6,21 @@ require.config({
     baseUrl: 'http://localhost:8888/miaomiao/MnApp/',
     waitSeconds: 60,
     map: {
-      '*': {
-        'css': 'js/lib/css' // or whatever the path to require-css is
-            }
+        '*': {
+            'css': 'js/lib/css' // or whatever the path to require-css is
+        }
     },
     paths: {
         alertify: 'js/lib/alertify/alertify.min',
         jquery: 'js/lib/jquery',
         underscore: 'js/lib/loDash',
         backbone: 'js/lib/backbone',
-        footable:'js/lib/footable/js/footable',
-        fuse:'js/lib/fuse/fuse.min',
+        footable: 'js/lib/footable/js/footable',
+        fuse: 'js/lib/fuse/fuse.min',
         mn: 'js/lib/backbone.marionette',
-        moment:'js/lib/moment/moment',
+        moment: 'js/lib/moment/moment',
         mdModal: 'js/views/mdModal',
+        upload: 'js/upload',
         bootstrap: 'js/lib/bootstrap-3.2.0/js/bootstrap.min',
         templates: 'templates',
         controller: "js/controller",
@@ -43,8 +44,8 @@ require.config({
         'bootstrap': {
             'deps': ['jquery']
         },
-        'footable':{
-            'deps':['css!js/lib/footable/css/footable-demos.css','css!js/lib/footable/css/footable.core.css']
+        'footable': {
+            'deps': ['css!js/lib/footable/css/footable-demos.css', 'css!js/lib/footable/css/footable.core.css']
         },
         'Modernizr': {
             'exports': 'Modernizr'

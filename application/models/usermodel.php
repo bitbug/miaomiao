@@ -7,9 +7,13 @@ class usermodel extends CI_Model {
                 $this->load->database();
         }
 
-        public function adminLogin($data){
+        public function adminLogin($UserName,$PassWord){
+                $data = array(
+                        "UserName"=>$UserName,
+                        "PassWord"=>md5($PassWord)
+                );
                 $this->db->where($data);
-                $this->db->from('e_entity');
+                $this->db->from('login');
 
                 $query = $this->db->get();
                 return $query->result_array();

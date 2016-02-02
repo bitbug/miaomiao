@@ -31,5 +31,29 @@ class productmodel extends CI_Model {
 
                 $query = $this->db->get();
                 return $query->result_array();
-        }     
+        }
+        public function addFile($UserId, $ProductId, $FilePath, $FileName, $FileType) {
+        $date = date('Y-m-d');
+        $sql = "INSERT INTO t_document (UserId, ProductId, FilePath, FileName, FileType, FileDateCreated, FileDateVoid) VALUES (?,?,?,?,?,?,?) ";
+        $data = array(
+                $UserId,
+                $ProductId,
+                $FilePath,
+                $FileName,
+                $FileType,
+                $date,
+                NULL
+        );
+
+        $insertQuery = $this->db->query($sql, $data);
+        $query = $this->db->insert_id();
+        return $query;
+    }
+    public function getProductPhoto($FileType,$ProductId){
+        $sql = "SELECT * FROM t_document WHERE FileType = ? AND ProductId = ?";
+        $data = array($FileType,$ProductId);
+
+        $query = $this->db->query($sql,$data);
+        return $query->result_array();
+    }
 }

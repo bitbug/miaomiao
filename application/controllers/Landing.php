@@ -6,7 +6,6 @@
         parent::__construct();
         
         session_start(); 
-
         $this->last_url = "/Admin/";
         $this->last_url = "index.php".$this->last_url;
 
@@ -25,6 +24,7 @@
         $_SESSION['LastLoginAttempt'] = $LastLoginAttempt;
 
         $this->load->database();
+
 
     }
 
@@ -63,24 +63,23 @@
         //send data to the backend and get user information
         $this->load->model("usermodel");
 
-        $data = array(
-            'UserName'=>$UserName,
-            'PassWord'=>$PassWord
-            );
+        // $data = array(
+        //     'UserName'=>$UserName
+        //     );
 
-        $attempt = $this->usermodel->adminLogin($data);
+        $attempt = $this->usermodel->adminLogin($UserName,$PassWord);
 
         $_SESSION["LastLoginAttempt"] = time();
 
-
-        if(sizeof($attempt)>0&&$attempt[0]["Role"]==1){
+        if(sizeof($attempt[0])>0&&$attempt[0]["Role"]==1){
             $this->createPackage($attempt[0]);
             header("Content-Type: application/json", true, 200);
             exit(json_encode($attempt[0]));
 
         }else{
+
             header("Content-Type: text/plain", true, 400);
-            exit("密码或用户名错误");
+            exit("用户名或密码错误");
         }
 
     }
@@ -89,7 +88,7 @@
         $_SESSION["package"] = array(
             "UserName"=>$r["UserName"],
             "ActiveSession"=>'true',
-            "Id"=>$r["Id"],
+            "Id"=>$r["UserId"],
             "Role"=>$r["Role"],
             "TimeStamp"=>time()
         );

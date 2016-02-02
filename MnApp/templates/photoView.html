@@ -1,0 +1,19 @@
+<div class="container-fluid photoManager">
+    <ul class="photoList">
+        <%collection.each(function(model){
+	%>
+            <li>
+                <div>
+                    <div class="closeButton"><span><i class="fa fa-times"></i></span></div>
+                    <div class="photoContainer" style="background-image:url(<%=baseurl+model.get('FilePath')%>)"></div>
+                </div>
+            </li>
+            <%})%>
+                <li>
+                    <div>
+                        <div class="addButton"><span><i class="fa fa-plus"></i></span></div>
+                        <input id="upload" type="file" class="uploadTrigger" style="display:none">
+                    </div>
+                </li>
+    </ul>
+</div>

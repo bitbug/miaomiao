@@ -5,7 +5,8 @@ define(['mn',
         tagName: "tr",
         className: "item",
         events: {
-            "click td": "loadModal"
+            "click td": "loadModal",
+            "click .photoManager": "loadPhotoManager"
         },
         loadModal: function() {
             App.modal.show("views/trading/itemDetail", {
@@ -13,11 +14,19 @@ define(['mn',
                 model: this.model
             })
         },
-        onRender:function(option){
+        loadPhotoManager: function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            App.modal.show('views/photoView', {
+                title: "照片管理",
+                model: this.model
+            })
+        },
+        onRender: function(option) {
             var model = option.model;
-            if(model.get("DateVoid")){
+            if (model.get("DateVoid")) {
                 this.$el.hide()
-            }else{
+            } else {
                 this.$el.show()
             }
         },

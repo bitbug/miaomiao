@@ -11,6 +11,7 @@ define([
     'rootLayout'
 ], function(Mn, appRouter, controller, mdModal, RootLayout) {
     var Application = Mn.Application.extend({
+        basePhotoPath: "http://localhost:8888/miaomiao/",
         setRootLayout: function() {
             this.root = new RootLayout();
         },

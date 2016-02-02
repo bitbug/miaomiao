@@ -227,9 +227,12 @@ a:hover {
     width: 30px;
     font-size: 14px;
 }
-.item>td,.userItem>td{
+
+.item>td,
+.userItem>td {
     min-width: 60px;
 }
+
 #skin-select #toggle:hover {
     background: none repeat scroll 0 0 rgba(0, 0, 0, 0.8);
 }
@@ -382,9 +385,11 @@ a:hover {
 .widget-menu:before {
     content: "树苗交易" !important;
 }
-.garden-menu:before{
+
+.garden-menu:before {
     content: "园艺资材" !important;
 }
+
 .design-kit:before {
     content: "用户管理" !important;
 }
@@ -3238,7 +3243,7 @@ b#speed {
     text-align: center;
     color: #45B6B0;
     padding-bottom: 20px;
-    top:20px;
+    top: 20px;
 }
 
 .order .value span {
@@ -3312,7 +3317,7 @@ b#speed {
     position: relative;
     text-align: center;
     color: #65C3DF;
-    top:20px;
+    top: 20px;
     padding-bottom: 20px
 }
 
@@ -3883,4 +3888,61 @@ small.pull-right {
     padding-bottom: 9px!important;
     margin: 30px 0 20px!important;
     border-bottom: 0px solid #eee!important;
+}
+
+.photoManager .photoList {
+    overflow: hidden;
+}
+
+.photoManager .photoList li {
+    list-style-type: none;
+    float: left
+}
+
+.photoManager .photoList li>div {
+    position: relative;
+    padding: 15px;
+}
+
+.photoManager .photoContainer {
+    border-radius: 5px;
+    border: 5px solid #ddd;
+    height: 200px;
+    width: 150px;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.photoManager .addButton {
+    border-radius: 5px;
+    border: 3px dashed #5cb85c;
+    height: 200px;
+    width: 140px;
+    position: relative;
+}
+
+.photoManager .addButton>span {
+    font-size: 5em;
+    position: absolute;
+    top: 33%;
+    right: 33%;
+    color: #5cb85c;
+    cursor: pointer;
+}
+
+.photoManager .closeButton {
+    height: 20px;
+    width: 20px;
+    background-color: red;
+    border-radius: 99px;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    cursor: pointer;
+}
+
+.photoManager .closeButton>span {
+    color: #fff;
+    padding: 4px;
+    font-size: 1.3em;
 }
