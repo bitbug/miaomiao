@@ -23,5 +23,9 @@
     <%=model.ProductDateCreated%>
 </td>
 <td>
-    <a href="" class="photoManager">管理照片</a>
+    <%if(model.Type=="selling"){%>
+        <a href="" class="photoManager">管理照片</a>
+        <%}else if(model.Type=="buying"){%>
+            <a href="" class="quotingList">报价信息</a>
+            <%}%>
 </td>

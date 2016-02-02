@@ -50,10 +50,17 @@ class productmodel extends CI_Model {
         return $query;
     }
     public function getProductPhoto($FileType,$ProductId){
-        $sql = "SELECT * FROM t_document WHERE FileType = ? AND ProductId = ?";
+        $sql = "SELECT * FROM t_document WHERE FileType = ? AND ProductId = ? AND FileDateVoid IS NULL";
         $data = array($FileType,$ProductId);
 
         $query = $this->db->query($sql,$data);
         return $query->result_array();
+    }
+    public function voidProductPhoto($FileDateVoid,$FileId){
+        $sql = "UPDATE t_document SET FileDateVoid = ? WHERE FileId = ?";
+        $data = array($FileDateVoid,$FileId);
+        $query = $this->db->query($sql,$data);
+
+        return "ok";
     }
 }

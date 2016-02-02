@@ -3930,7 +3930,7 @@ small.pull-right {
     cursor: pointer;
 }
 
-.photoManager .closeButton {
+.photoManager .deleteButton {
     height: 20px;
     width: 20px;
     background-color: red;
@@ -3941,7 +3941,7 @@ small.pull-right {
     cursor: pointer;
 }
 
-.photoManager .closeButton>span {
+.photoManager .deleteButton>span {
     color: #fff;
     padding: 4px;
     font-size: 1.3em;

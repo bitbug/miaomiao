@@ -138,4 +138,14 @@ class Products extends REST_Controller {
         }
         
     }
+    public function productPhoto_put(){
+        $FileDateVoid = $this->put("FileDateVoid");
+        $FileId = $this->put("FileId");
+        $result = $this->productmodel->voidProductPhoto($FileDateVoid,$FileId);
+        if($result){
+            $this->response(array("message"=>"success"),200);
+        }else{
+            $this->response(array("message"=>"error"),204);
+        }
+    }
 }
