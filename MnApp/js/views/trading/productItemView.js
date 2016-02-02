@@ -6,11 +6,20 @@ define(['mn',
         className: "item",
         events: {
             "click td": "loadModal",
-            "click .photoManager": "loadPhotoManager"
+            "click .photoManager": "loadPhotoManager",
+            "click .quotingList": "loadQuotingList"
         },
         loadModal: function() {
             App.modal.show("views/trading/itemDetail", {
                 title: this.model.get("Name"),
+                model: this.model
+            })
+        },
+        loadQuotingList: function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            App.modal.show('views/trading/quotingList', {
+                title: "报价记录",
                 model: this.model
             })
         },

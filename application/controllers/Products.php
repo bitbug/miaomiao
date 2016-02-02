@@ -32,18 +32,22 @@ class Products extends REST_Controller {
                 
         }
         public function productListing_get(){
+                $data = array("DateVoid"=>NULL);
+
                 if($this->get("Type")&&$this->get("ProductType")){
 
                     $Type = $this->get("Type");
                     $ProductType = $this->get("ProductType");
 
-                    $data = array("Type"=>$Type,
-                                  "ProductType"=>$ProductType,
-                                  "DateVoid"=>NULL);
-                }else{
-                    $data = array("DateVoid"=>NULL);
+                    $data = array_merge($data,array("Type"=>$Type,
+                                  "ProductType"=>$ProductType));
                 }
 
+                if($this->get("RelateProduct")){
+                    $RelateProduct = $this->get("RelateProduct");
+                    $data = array_merge($data,array("RelateProduct"=>$RelateProduct));
+                }
+                
                 $result = $this->productmodel->getProductList($data);
 
                 if($result){
@@ -148,4 +152,5 @@ class Products extends REST_Controller {
             $this->response(array("message"=>"error"),204);
         }
     }
+
 }
