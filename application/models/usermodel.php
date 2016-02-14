@@ -7,9 +7,9 @@ class usermodel extends CI_Model {
                 $this->load->database();
         }
 
-        public function adminLogin($UserName,$PassWord){
+        public function userLogin($WechatID,$PassWord){
                 $data = array(
-                        "UserName"=>$UserName,
+                        "WechatID"=>$WechatID,
                         "PassWord"=>md5($PassWord)
                 );
                 $this->db->where($data);
