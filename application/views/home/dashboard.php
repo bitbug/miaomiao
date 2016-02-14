@@ -9,8 +9,8 @@
         
         <link rel="stylesheet" type="text/css" href="<?=base_url().'MnApp/css/bootstrapOverrides.css'?>">
         <link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.css">
-        <link rel="stylesheet" href="<?=base_url().'MnApp/js/lib/alertify/alertify.css'?>">
-        <link rel="stylesheet" href="<?=base_url().'MnApp/js/lib/alertify/alertify.bootstrap.css'?>">
+        <link rel="stylesheet" href="<?=base_url().'lib/alertify/alertify.css'?>">
+        <link rel="stylesheet" href="<?=base_url().'lib/alertify/alertify.bootstrap.css'?>">
         <link rel="stylesheet" type="text/css" href="<?=base_url().'MnApp/css/animate.css'?>">
         <link rel="stylesheet" type="text/css" href="<?=base_url().'MnApp/css/miaomiao.css'?>">
 

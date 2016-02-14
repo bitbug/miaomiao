@@ -1,0 +1,148 @@
+<style>
+[class^="ch-"] *,
+[class^="ch-"] *:before,
+[class^="ch-"] *:after {
+    box-sizing: border-box;
+    /*padding: 0;;
+  margin: 0;*/
+}
+
+.ch-mask {
+    background: #777;
+    opacity: .5;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 10000;
+    top: 0;
+    left: 0;
+}
+
+.ch-container-mdModal {
+    width: 70%;
+    max-height: 95%;
+    box-shadow: 0 40px 77px rgba(0, 0, 0, 0.22), 0 27px 24px rgba(0, 0, 0, 0.2);
+    border: 1px solid #eee;
+    background: #FFF;
+    position: fixed;
+    z-index: 10001;
+    left: 50%;
+    top: 1em;
+    margin-left: -25%;
+    padding: 24px;
+    font-family: 'Roboto', sans-serif;
+    display: none;
+}
+
+.ch-marginBottom {
+    margin-bottom: 1em;
+}
+
+.ch-header-mdModal h3 {
+    float: left;
+    color: rgba(0, 0, 0, 0.87);
+    font-weight: 300;
+    font-size: 2.1em;
+    margin: 0;
+    padding: 0;
+}
+
+.ch-close-mdModal {
+    float: right;
+    height: 40px;
+    width: 40px;
+    line-height: 40px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.ch-content-mdModal {
+    position: relative;
+    display: block;
+}
+
+.ch-content-mdModal {
+    height: -webkit-calc(100% - 30px);
+    height: -moz-calc(100% - 30px);
+    height: calc(100% - 30px);
+}
+
+.ch-footer-mdModal + .ch-content-mdModal {
+    height: -webkit-calc(100% - 80px);
+    height: -moz-calc(100% - 80px);
+    height: calc(100% - 80px);
+}
+
+.ch-footer-mdModal {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #FFF;
+    height: 50px;
+}
+
+.ch-footerContent-mdModal {}
+
+.ch-footer-mdModal a {
+    color: #FFAB40;
+    margin-right: 20px;
+    line-height: 3em;
+}
+
+.ch-textRight {
+    text-align: right;
+}
+
+.ch-clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+@media screen and (max-width: 992px) {
+    .ch-container-mdModal {
+        width: 75% !important;
+        margin-left: -37.5% !important;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .ch-container-mdModal {
+        width: 95% !important;
+        margin-left: -47.5% !important;
+    }
+}
+</style>
+<%if(showMask){%>
+    <div class="ch-mask"></div>
+    <%}%>
+        <div class="ch-container-mdModal animated fadeInDown">
+            <div class="ch-header-mdModal ch-clearfix ch-marginBottom">
+                <h3>The Title</h3>
+                <div class="ch-close-mdModal">
+                    <i class="fa fa-times"></i>
+                </div>
+            </div>
+            <!-- header end -->
+            <%if(showFooter){%>
+                <!-- 
+      Footer is place here in the HTML so we can target it with CSS, 
+      it will still appear below the content section
+  -->
+                <div class="ch-footer-mdModal ch-clearfix ch-textRight">
+                    <div class="ch-inlineBtnGrp-mdModal ch-footerContent-mdModal">
+                        <a class="ch-cancel" href="#">
+                            <%=cancelBtnText%>
+                        </a>
+                        <a class="ch-okay" href="#">
+                            <%=okayBtnText%>
+                        </a>
+                    </div>
+                </div>
+                <!-- End of Footer -->
+                <%}%>
+                    <div class="ch-content-mdModal ch-marginBottom">
+                        <!-- Drop in your content here -->
+                    </div>
+        </div>

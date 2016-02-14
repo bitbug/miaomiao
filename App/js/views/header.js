@@ -5,7 +5,7 @@ define(['mn',
         template: function() {
             var _this = this;
             return _.template(template, {
-                admin: App.controller.admin
+                user: App.user
             })
         }
 
