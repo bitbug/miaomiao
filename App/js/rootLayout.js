@@ -6,8 +6,8 @@ define(['mn',
 
         regions: {
         	header:"#header",
-            nav: '#nav',
-            main: '#main'        
+        	menu:"#sidebar",
+            main: '#main-content'        
         }
     });
 

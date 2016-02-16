@@ -8,7 +8,7 @@ define([
     'router',
     'controller',
     'mdModal',
-    'rootLayout'
+    'rootLayout',
 ], function(Mn, appRouter, controller, mdModal, RootLayout) {
     var Application = Mn.Application.extend({
         basePhotoPath: "http://localhost:8888/miaomiao/",
@@ -207,19 +207,18 @@ define([
 
         },
     });
-
-    var App = new Application();
-    App.on('before:start', function() {
-        App.setRootLayout();
+        var MMAPP = new Application();
+    MMAPP.on('before:start', function() {
+        MMAPP.setRootLayout();
     });
-    App.on("start", function() {
+    MMAPP.on("start", function() {
         var controller = new Controller();
-        App.router = new Router({
+        MMAPP.router = new Router({
             controller: controller
         });
-        App.controller = controller;
-        App.modal = new mdModal();
-        App.controller.start();
+        MMAPP.controller = controller;
+        MMAPP.modal = new mdModal();
+        MMAPP.controller.start();
         if (!Backbone.History.started) {
             Backbone.history.start();
         }
@@ -228,5 +227,5 @@ define([
     })
 
 
-    return window.App = App;
+    return window.MMAPP = MMAPP;
 });

@@ -3,12 +3,13 @@ define(['mn',
     Router = Backbone.Marionette.AppRouter.extend({
         appRoutes: {
             "dashboard":"showDashboard",
-            // "trading/?des=:des?filter=:filter":"showProductList",
+             "trading/?des=:des?filter=:filter":"showProductList",
             // "membership":"showSetting",
             // "users":"showUserList",
             // "article":"showArticle"
         },
         onRoute:function(name,path,param){
+            console.log(param)
             var _this = this
                 breadList = '';
             param.forEach(function(seg){
@@ -18,7 +19,7 @@ define(['mn',
                     breadList+=item
                 }
             })
-            $("#breadcrumb").html(breadList)
+            MMAPP.currentPos = breadList
         },
         parseCh:function(phrase){
             var enToCh={

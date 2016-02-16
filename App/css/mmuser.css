@@ -1,0 +1,36 @@
+@media (max-width: 776px) {
+	.position{
+		text-align: center;
+		font-size: 13px;
+		color:#fff;
+	}
+	#content{
+		min-height: 400px
+	}
+	#content .page-header{
+		min-height: 200px
+	}
+	.panel{
+		margin-bottom:10px;
+	}
+		#productContainer{
+	  padding:0px;
+	}
+	#productContainer li{
+	  overflow: hidden;
+	  padding-left:10px;
+	  padding-right: 10px
+	}
+	#productContainer .productQuant{
+		color:#999;
+		font-size:12px;
+
+	}
+	#productContainer .productName{
+		font-size:15px;
+	}
+}	
+.panel-sub{
+		padding:20px;
+		text-align: center;
+}

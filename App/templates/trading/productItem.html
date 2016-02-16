@@ -1,0 +1,42 @@
+<style>
+.content{
+	float: left
+}   .productPanel{
+	position: relative;
+}
+    .productPanel .label{
+    	position: absolute;
+    	right:0px;
+    	bottom: 10px;
+    	width:20%;
+    	font-size:12px;
+    }
+	.location i{
+		color:#dd5a43;
+	}
+	.productPrice i{
+		color:#a8bc7b;
+	}
+
+</style>
+<div class="col-xs-12">
+	<div class="panel panel-default productPanel">
+		<div class="panel-body" style="padding:10px">
+			<div class="content">
+			<p><span class="productName"><%=model.Name%></span>&nbsp&nbsp<span class="productQuant"><%=model.Quant+model.Unit%></span></p>
+			<p class="location"><span><i class="fa fa-map-marker"></i></span>&nbsp<%=model.Location%></p>
+			<p class="productPrice"><span><i class="fa fa-cny"></i></span>&nbsp<%=model.Price%></p>
+			</div>
+			<span class="label label-success">甩</span>
+<!-- 				<div class="tagContainer">
+				<div class="triangleTag"></div>
+				<p>甩</p>
+			</div> -->
+
+
+
+		</div>
+
+	</div>
+</div>
+
