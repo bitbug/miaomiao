@@ -3,7 +3,7 @@ define(['jquery',
     'backbone'
 ], function($, _, Backbone) {
     var SellingModel = Backbone.Model.extend({
-
+    url:"./index.php/Products/productById",
     idAttribute: "ProductId"
     })
 

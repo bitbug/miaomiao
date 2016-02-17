@@ -2,33 +2,14 @@ define(['mn',
     'text!templates/trading/productItem.html'
 ], function(Mn, template) {
     var ProductItemView = Mn.ItemView.extend({
-        tagName:"li",
+        tagName: "li",
         events: {
-            "click td": "loadModal",
-            "click .photoManager": "loadPhotoManager",
-            "click .quotingList": "loadQuotingList"
+            "click .panel": "routeToDetail",
         },
-        loadModal: function() {
-            App.modal.show("views/trading/itemDetail", {
-                title: this.model.get("Name"),
-                model: this.model
-            })
-        },
-        loadQuotingList: function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            App.modal.show('views/trading/quotingList', {
-                title: "报价记录",
-                model: this.model
-            })
-        },
-        loadPhotoManager: function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            App.modal.show('views/photoView', {
-                title: "照片管理",
-                model: this.model
-            })
+        routeToDetail: function() {
+            MMAPP.router.navigate("productDetail/?title=ProductDetail?ProductId=" + this.model.id, {
+                trigger: true
+            });
         },
         onRender: function(option) {
             var model = option.model;

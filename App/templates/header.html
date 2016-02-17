@@ -4,14 +4,21 @@
 
 					<!-- /COMPANY LOGO -->
 					<!-- TEAM STATUS FOR MOBILE -->
+					<%if(pos){%>
 					<div class="visible-xs">
 						<a href="#" class="team-status-toggle switcher btn dropdown-toggle" style="left:auto;right:auto">
 							<i class="fa fa-chevron-left"></i>
 						</a>
 					</div>
+					<%}%>
+
 					<!-- /TEAM STATUS FOR MOBILE -->
 					<div class="position">
+						<%if(pos){%>
 						<p><%=pos%></p>
+						<%}else{%>
+						<p>首页</p>
+					<%}%>
 					</div>
 					<!-- SIDEBAR COLLAPSE -->
 					<div id="sidebar-collapse" class="sidebar-collapse btn">

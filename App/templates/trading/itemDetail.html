@@ -1,0 +1,75 @@
+<style>
+#photoSliders{
+ height:200px;
+}
+.carousel-control span{
+    margin-top: 75px
+}
+</style>
+<div class="row">
+    <div id="content" class="col-lg-12">
+        <!-- PAGE HEADER-->
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="page-header" style="padding:0px">
+                    <!-- CAROUSEL-->
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-2">
+                    
+                            
+                                    <div id="photoSliders" class="carousel slide">
+                                        <!-- Wrapper for slides -->
+                                        <div class="carousel-inner">
+                                            <%console.log(baseurl)%>
+                                                <%photoCollection.forEach(function(model,index){%>
+                                                    <div class="item <%=(index==0)? 'active':''%>">
+                                                    <div style="background:url(<%=baseurl+model.FilePath%>);background-size:cover;height:200px;width:100%">                                                    
+                                                    </div>
+                                                    </div>
+                                                    <%})%>
+                                        </div>
+                                        <!-- Controls -->
+                                        <a class="left carousel-control" href="#photoSliders" data-slide="prev">
+                                            <span class="fa fa-prev"><i class="fa fa-chevron-left"></i></span>
+                                        </a>
+                                        <a class="right carousel-control" href="#photoSliders" data-slide="next">
+                                            <span class="fa fa-next"><i class="fa fa-chevron-right"></i></span>
+                                        </a>
+                                    </div>
+                                
+
+                        </div>
+                    </div>
+                    <!-- CAROUSEL-->
+
+                </div>
+            </div>
+        </div>
+        <!-- /PAGE HEADER -->
+        <!-- DASHBOARD CONTENT -->
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="panel panel-default productPanel" data-des="product" data-filter="detail">
+                    <div class="panel-body" style="padding:10px">
+                        <div class="content">
+                            <p><span class="productName"><%=model.Name%></span>&nbsp&nbsp<span class="productQuant"><%=model.Quant+model.Unit%></span></p>
+                            <p class="location"><span><i class="fa fa-map-marker"></i></span>&nbsp
+                                <%=model.Location%>
+                            </p>
+                            <p class="productPrice"><span><i class="fa fa-cny"></i></span>&nbsp
+                                <%=model.Price%>
+                            </p>
+                        </div>
+                        <span class="label label-success">甩</span>
+                        <!--        <div class="tagContainer">
+                    <div class="triangleTag"></div>
+                    <p>甩</p>
+                  </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /DASHBOARD CONTENT -->
+    </div>
+    <!-- /CONTENT-->
+</div>

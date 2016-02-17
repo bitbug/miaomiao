@@ -1,36 +1,41 @@
 define(['mn',
-], function(Mn) {
+    'views/header'
+], function(Mn, HeaderView) {
     Router = Backbone.Marionette.AppRouter.extend({
         appRoutes: {
-            "dashboard":"showDashboard",
-             "trading/?des=:des?filter=:filter":"showProductList",
-            // "membership":"showSetting",
-            // "users":"showUserList",
-            // "article":"showArticle"
+            "dashboard": "showDashboard",
+            "trading/?des=:des?filter=:filter": "showProductList",
+            "productDetail/?title=:title?ProductId=:id": "showProductDetail"
+                // "membership":"showSetting",
+                // "users":"showUserList",
+                // "article":"showArticle"
         },
-        onRoute:function(name,path,param){
-            console.log(param)
+        onRoute: function(name, path, param) {
             var _this = this
-                breadList = '';
-            param.forEach(function(seg){
-                if(seg){
-                    seg = _this.parseCh(seg);              
-                    item="<li><i class='fa fa-lg fa-angle-right'></i></li><li><a title='"+seg+"'>"+seg+"</a></li>";
-                    breadList+=item
+            breadList = '';
+            param.forEach(function(seg) {
+                if (seg) {
+                    seg = _this.parseCh(seg);
+                    if (seg != undefined) {
+                        breadList += seg;
+                    }
+
                 }
             })
             MMAPP.currentPos = breadList
+            MMAPP.root.showChildView('header', new HeaderView());
         },
-        parseCh:function(phrase){
-            var enToCh={
-                "seedling":"树苗交易",
-                "garden":"园艺资材",
-                "selling":"供应",
-                "buying":"求购",
-                "quoting":"报价",
-                "setting":"平台设置",
-                "membership":"会员制度",
-                "payment":"支付信息"
+        parseCh: function(phrase) {
+            var enToCh = {
+                "seedling": "树苗",
+                "garden": "园艺资材",
+                "selling": "供应",
+                "buying": "求购",
+                "quoting": "报价",
+                "setting": "平台设置",
+                "membership": "会员制度",
+                "payment": "支付信息",
+                "ProductDetail": "商品详情"
             };
             return enToCh[phrase];
         }
@@ -107,5 +112,5 @@ define(['mn',
     //     },
     // });
 
-     return Router;
+    return Router;
 });

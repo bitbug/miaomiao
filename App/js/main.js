@@ -7,7 +7,7 @@ require.config({
     waitSeconds: 60,
     map: {
         '*': {
-            'css': '/miaomiao/lib/css' // or whatever the path to require-css is
+            'css': '/miaomiao/lib/css.js' // or whatever the path to require-css is
         }
     },
     paths: {
@@ -27,6 +27,7 @@ require.config({
         rootLayout: "js/rootLayout",
         router: 'js/router',
         views: 'js/views',
+        owl:'/miaomiao/lib/owl/owl.carousel.min',
         text: 'js/text',
         //async: 'App/viper/js/async',
         // chartjs: 'js/chartjs/js/Chart',
@@ -56,6 +57,9 @@ require.config({
         },
         'mn': {
             'deps': ['jquery', 'underscore', 'backbone']
+        },
+        'owl':{
+            'deps':['css!/miaomiao/lib/owl/owl.theme.css','css!/miaomiao/lib/owl/owl.carousel.css']
         }
     },
 

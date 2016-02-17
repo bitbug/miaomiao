@@ -6,11 +6,24 @@ class productmodel extends CI_Model {
                 parent::__construct();
                 $this->load->database();
         }
+        public function getProductById($data){
+            $this->db->where($data);
+            $this->db->from('e_listing');
+            $query = $this->db->get();
+
+            return $query->result_array();
+        }
         public function createProduct($data){
                 $this->db->insert('e_listing',$data);
                 $query = $this->db->insert_id();
 
                 return $query;
+        }
+        public function getSearchResult($Query,$ProductType,$Type){
+                $sql = "select * from e_listing where concat(NameUni,LocationUni) like '%".$Query."%' and Type=? and ProductType=? and DateVoid is NULL";
+                $data = array($Type,$ProductType);
+                $query = $this->db->query($sql,$data);
+                return $query->result_array();
         }
         public function getProductList($data){
                 $this->db->where($data);
@@ -63,4 +76,5 @@ class productmodel extends CI_Model {
 
         return "ok";
     }
+
 }

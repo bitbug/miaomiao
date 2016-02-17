@@ -9,11 +9,25 @@ class Products extends REST_Controller {
                 $this->load->library('mmsecurity');
                 $this->load->helper('url_helper');
         }
+        public function productById_get(){
+            $data = array(
+                "ProductId"=>$this->get("ProductId"),
+                "DateVoid"=>NULL
+                );
+            $result = $this->productmodel->getProductById($data);
+            if($result){
+                $this->response($result[0],200);
+            }else{
+                $this->response(array(),204);
+            }
+        }
         public function product_post(){
             $data=array(
                 "Description"=>$this->post("Description"),
                 "Location"=>$this->post("Location"),
+                "LocationUni"=>$this->unicode_encode($this->post("Location"),false),
                 "Name"=> $this->post("Name"),
+                "NameUni"=>$this->unicode_encode($this->post("NameUni"),false),
                 "Price"=> $this->post("Price"),
                 "ProductType"=> $this->post("ProductType"),
                 "Quant"=> $this->post("Quant"),
@@ -30,6 +44,18 @@ class Products extends REST_Controller {
             }
 
                 
+        }
+        public function searchProduct_get(){
+            $Query = $this->get("Query");
+            $ProductType = $this->get("ProductType");
+            $Type = $this->get("Type");
+
+            $result = $this->productmodel->getSearchResult($this->unicode_encode($Query,false),$ProductType,$Type);
+            if($result){
+                $this->response($result,200);
+            }else{
+                $this->response(array(),204);
+            }
         }
         public function productListing_get(){
                 $data = array("DateVoid"=>NULL);
@@ -59,18 +85,22 @@ class Products extends REST_Controller {
         public function productListing_put(){
                 $Id = $this->put("ProductId");
                 $Name = $this->put("Name");
+                $NameUni = $this->unicode_encode($Name,false);
                 $Quant = $this->put("Quant");
                 $Unit = $this->put("Unit");
                 $Price = $this->put("Price");
                 $Location = $this->put("Location");
+                $LocationUni = $this->unicode_encode($Location,false);
                 $Description = $this->put("Description");
                 $DateVoid = $this->put("DateVoid");
                 $data = array(
                         "Name"=>$Name,
+                        "NameUni"=>$NameUni,
                         "Quant"=>$Quant,
                         "Unit"=>$Unit,
                         "Price"=>$Price,
                         "Location"=>$Location,
+                        "LocationUni"=>$LocationUni,
                         "Description"=>$Description,
                         "DateVoid"=>$DateVoid
                         );
@@ -152,5 +182,31 @@ class Products extends REST_Controller {
             $this->response(array("message"=>"error"),204);
         }
     }
+    public function unicode_encode($str, $s) {
+    $str = strtolower($str);
+    $char = 'UTF-8';
+    $arr = array();
+    $out = "";
+    $c = mb_strlen($str,$char);
+    $t = false;
+
+    for($i =0;$i<$c;$i++){
+        $arr[]=mb_substr($str,$i,1,$char);
+    }
+
+    foreach($arr as $i=>$v){
+        if(preg_match('/\w/i',$v,$match)){
+            $out .= $v;
+            $t = true;
+        }else{
+            if($t) $out .= " ";
+            if(isset($s) && $s) $out .= "+";
+            $out .= bin2hex(iconv("UTF-8","UCS-2",$v))." ";
+            $t = false;
+        }
+    }
+    return $out;
+}
+
 
 }
