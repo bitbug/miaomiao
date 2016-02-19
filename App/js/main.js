@@ -36,7 +36,7 @@ require.config({
         collections: 'js/collections',
         models: 'js/models',
         Modernizr: 'js/Modernizr/js/modernizr2.8.3.custom',
-        slimScroll:'/miaomiao/lib/jQuery-slimScroll-1.3.0/jquery.slimscroll.min'
+        //slimScroll:'/miaomiao/lib/jQuery-slimScroll-1.3.0/jquery.slimscroll.min'
         // BSDatePicker: 'js/bs-datepicker/js/bootstrap-datepicker',
         // pager: 'js/objects/pagination/js/pager',
         // maskLoader: 'js/objects/maskLoader/maskLoader',

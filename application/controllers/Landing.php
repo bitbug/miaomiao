@@ -49,7 +49,7 @@
 
         // If the last attempt was less than 3-6 seconds, return an error
         if(isset($_SESSION["LastLoginAttempt"])){
-            if(time()-$_SESSION["LastLoginAttempt"]<rand(3,5)){
+            if(time()-$_SESSION["LastLoginAttempt"]<rand(1,3)){
                 header("Content-Type: text/plain", true, 400);
                 exit("请稍等几秒再尝试登录");
             }

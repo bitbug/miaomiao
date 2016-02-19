@@ -19,7 +19,7 @@ define(['mn',
                 filter = $(e.currentTarget).data("filter");
             switch(des){
                 case "dashboard":
-                    App.router.navigate("dashboard",{trigger:true});
+                    App.router.navigate("",{trigger:true});
                 break;
                 case "garden":
                 case "seedling":

@@ -1,0 +1,34 @@
+<style>
+.content{
+	float: left
+}   .productPanel{
+	position: relative;
+}
+    .productPanel .label{
+    	position: absolute;
+    	right:0px;
+    	bottom: 10px;
+    	width:20%;
+    	font-size:12px;
+    }
+	.location i{
+		color:#dd5a43;
+	}
+	.productPrice i{
+		color:#a8bc7b;
+	}
+
+</style>
+<div class="col-xs-12">
+	<div class="panel panel-default productPanel" data-des="product" data-filter="detail">
+		<div class="panel-body" style="padding:10px">
+			<div class="content">
+			<p><span class="productName"><%=model.Name%></span>&nbsp&nbsp<span class="productQuant"><%=model.Quant+model.Unit%></span></p>
+			<p class="location"><span><i class="fa fa-calendar"></i></span>&nbsp<%=model.ProductDateCreated%></p>
+			<p class="productPrice"><span><i class="fa fa-cny"></i></span>&nbsp<%=model.Price%></p>
+			</div>
+		</div>
+
+	</div>
+</div>
+

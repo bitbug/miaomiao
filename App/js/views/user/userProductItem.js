@@ -1,13 +1,12 @@
 define(['mn',
-    'text!templates/trading/productItem.html'
+    'text!templates/user/userProductItem.html'
 ], function(Mn, template) {
     var ProductItemView = Mn.ItemView.extend({
-        tagName: "li",
         events: {
-            "click .panel": "routeToDetail",
+            "click .panel": "routeToEdit",
         },
-        routeToDetail: function() {
-            MMAPP.router.navigate("productDetail/?title=ProductDetail?ProductId=" + this.model.id+"?mode=view", {
+        routeToEdit: function() {
+            MMAPP.router.navigate("productDetail/?title=ProductEdit?ProductId=" + this.model.id+"?mode=edit", {
                 trigger: true
             });
         },

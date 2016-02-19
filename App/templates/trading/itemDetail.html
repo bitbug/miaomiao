@@ -5,6 +5,26 @@
 .carousel-control span{
     margin-top: 75px
 }
+.noPic{
+    width:100%;
+    height:200px;
+    background-color:#eee
+}
+.noPic h4{
+        position: absolute;
+    top: 43%;
+    left: 40%;
+    color: #999;
+}
+.detailinfo{
+    list-style-type: none;
+    padding:0px;
+    font-size:14px;
+}
+.detailinfo>li{
+    padding-top:10px;
+    border-bottom: 1px solid #eee
+}
 </style>
 <div class="row">
     <div id="content" class="col-lg-12">
@@ -16,11 +36,10 @@
                     <div class="row">
                         <div class="col-md-8 col-md-offset-2">
                     
-                            
+                            <%if(photoCollection&&photoCollection.length>0){%>
                                     <div id="photoSliders" class="carousel slide">
                                         <!-- Wrapper for slides -->
                                         <div class="carousel-inner">
-                                            <%console.log(baseurl)%>
                                                 <%photoCollection.forEach(function(model,index){%>
                                                     <div class="item <%=(index==0)? 'active':''%>">
                                                     <div style="background:url(<%=baseurl+model.FilePath%>);background-size:cover;height:200px;width:100%">                                                    
@@ -36,6 +55,11 @@
                                             <span class="fa fa-next"><i class="fa fa-chevron-right"></i></span>
                                         </a>
                                     </div>
+                            <%}else{%>
+                                <div class="noPic">
+                                    <h4 style="">暂无图片</h4>
+                                </div>
+                            <%}%>
                                 
 
                         </div>
@@ -48,24 +72,47 @@
         <!-- /PAGE HEADER -->
         <!-- DASHBOARD CONTENT -->
         <div class="row">
-            <div class="col-xs-12">
+            <div class="col-xs-12" style="padding-left:30px;padding-right:30px">
                 <div class="panel panel-default productPanel" data-des="product" data-filter="detail">
                     <div class="panel-body" style="padding:10px">
                         <div class="content">
-                            <p><span class="productName"><%=model.Name%></span>&nbsp&nbsp<span class="productQuant"><%=model.Quant+model.Unit%></span></p>
-                            <p class="location"><span><i class="fa fa-map-marker"></i></span>&nbsp
-                                <%=model.Location%>
-                            </p>
-                            <p class="productPrice"><span><i class="fa fa-cny"></i></span>&nbsp
-                                <%=model.Price%>
-                            </p>
+                            <ul class="detailinfo">
+                                <li>
+                                   <label for="">品名:</label>
+                                   &nbsp<span><%=model.get('Name')%></span> 
+                                </li>
+                                <li>
+                                    <label for="">数量:</label>
+                                    &nbsp<span><%=model.get('Quant')%></span>
+                                </li>
+                                <li>
+                                    <label for="">单位</label>
+                                    &nbsp<span><%=model.get('Unit')%></span>
+                                </li>
+                                <li>
+                                    <label for="">价格</label>
+                                    &nbsp<span style="color:#96ae60"><%=model.get('Price')%></span>
+                                </li>
+                                <li>
+                                    <label for="">地点</label>
+                                    &nbsp<span><%=model.get('Location')%></span>
+                                </li>
+                                <li>
+                                    <label for="">详情</label>
+                                    &nbsp<p><%=model.get('Description')%></p>
+                                </li>
+
+                            </ul>
+
                         </div>
-                        <span class="label label-success">甩</span>
                         <!--        <div class="tagContainer">
                     <div class="triangleTag"></div>
                     <p>甩</p>
                   </div> -->
                     </div>
+                </div>
+                <div class="col-xs-12" style="margin-bottom:10px;padding:0px">
+                            <button type="submit" style="width:100%"id="change" class="btn btn-success col-md-12 col-sm-12">联系卖家</button>
                 </div>
             </div>
         </div>

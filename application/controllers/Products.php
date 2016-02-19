@@ -21,6 +21,35 @@ class Products extends REST_Controller {
                 $this->response(array(),204);
             }
         }
+        public function productById_put(){
+             $Id = $this->put("ProductId");
+                $Name = $this->put("Name");
+                $NameUni = $this->unicode_encode($Name,false);
+                $Quant = $this->put("Quant");
+                $Unit = $this->put("Unit");
+                $Price = $this->put("Price");
+                $Location = $this->put("Location");
+                $LocationUni = $this->unicode_encode($Location,false);
+                $Description = $this->put("Description");
+                $DateVoid = $this->put("DateVoid");
+                $data = array(
+                        "Name"=>$Name,
+                        "NameUni"=>$NameUni,
+                        "Quant"=>$Quant,
+                        "Unit"=>$Unit,
+                        "Price"=>$Price,
+                        "Location"=>$Location,
+                        "LocationUni"=>$LocationUni,
+                        "Description"=>$Description,
+                        "DateVoid"=>$DateVoid
+                        );
+                $result = $this->productmodel->updateProductItem($data,$Id);
+                if($result){
+                        $this->response($result,200);
+                }else{
+                        $this->response(array("message"=>"error"),204);
+                }
+            }
         public function product_post(){
             $data=array(
                 "Description"=>$this->post("Description"),
@@ -60,13 +89,14 @@ class Products extends REST_Controller {
         public function productListing_get(){
                 $data = array("DateVoid"=>NULL);
 
-                if($this->get("Type")&&$this->get("ProductType")){
+                if($this->get("Type")){
 
-                    $Type = $this->get("Type");
+                    $Type = $this->get("Type");                  
+                    $data = array_merge($data,array("Type"=>$Type));
+                }
+                if($this->get("ProductType")){
                     $ProductType = $this->get("ProductType");
-
-                    $data = array_merge($data,array("Type"=>$Type,
-                                  "ProductType"=>$ProductType));
+                    $data = array_merge($data,array("ProductType"=>$ProductType));
                 }
 
                 if($this->get("RelateProduct")){
@@ -74,6 +104,11 @@ class Products extends REST_Controller {
                     $data = array_merge($data,array("RelateProduct"=>$RelateProduct));
                 }
                 
+                if($this->get("UserCreated")){
+                    $UserCreated = $this->get("UserCreated");
+                    $data = array_merge($data,array("UserCreated"=>$UserCreated));
+                }
+
                 $result = $this->productmodel->getProductList($data);
 
                 if($result){

@@ -23,10 +23,13 @@ define(['mn',
                 case "dashboard":
                     MMAPP.router.navigate("dashboard",{trigger:true});
                 break;
-                case "garden":
                 case "seedling":
                     MMAPP.router.navigate("trading/?des="+des+"?filter="+filter,{trigger:true});
+                case "garden":
+                    MMAPP.router.navigate("landing/?des="+des,{trigger:true});
                 break;
+                case "news":
+                    MMAPP.router.navigate("article/?title=article",{trigger:true});
             }
         }
     })

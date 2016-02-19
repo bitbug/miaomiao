@@ -8,6 +8,18 @@ class News extends REST_Controller {
                 $this->load->model('newsmodel');
                 $this->load->helper('url_helper');
         }
+        public function getArticleById_get(){
+                $filter = array(
+                    "ArticleDateVoid"=>NULL,
+                    "ArticleId"=>$this->get("ArticleId")
+                    );
+                $result = $this->newsmodel->getArticle($filter);
+                if($result){
+                    $this->response($result[0],200);
+                }else{
+                    $this->response(array(),204);
+                }
+        }
         public function articleList_get(){
 
                 $filter=array(

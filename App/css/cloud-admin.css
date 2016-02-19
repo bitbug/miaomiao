@@ -8997,6 +8997,61 @@ ul.stats li small {
 .well.well-bottom {
   border-radius: 0 0 4px 4px;
 }
+.photoManager .photoList {
+    overflow: hidden;
+}
 
+.photoManager .photoList li {
+    list-style-type: none;
+    float: left
+}
+
+.photoManager .photoList li>div {
+    position: relative;
+    padding: 15px;
+}
+
+.photoManager .photoContainer {
+    border-radius: 5px;
+    border: 5px solid #ddd;
+    height: 200px;
+    width: 150px;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.photoManager .addButton {
+    border-radius: 5px;
+    border: 3px dashed #5cb85c;
+    height: 200px;
+    width: 140px;
+    position: relative;
+}
+
+.photoManager .addButton>span {
+    font-size: 5em;
+    position: absolute;
+    top: 33%;
+    right: 33%;
+    color: #5cb85c;
+    cursor: pointer;
+}
+
+.photoManager .deleteButton {
+    height: 20px;
+    width: 20px;
+    background-color: red;
+    border-radius: 99px;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    cursor: pointer;
+}
+
+.photoManager .deleteButton>span {
+    color: #fff;
+    padding: 4px;
+    font-size: 1.3em;
+}
 
 

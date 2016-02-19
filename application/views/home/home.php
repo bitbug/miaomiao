@@ -8,7 +8,7 @@
         <link rel="stylesheet" type="text/css" href="<?= base_url().'App/css/cloud-admin.css'?>">
         
         <link rel="stylesheet" type="text/css" href="<?=base_url().'App/css/themes/default.css'?>" id="skin-switcher" >
-        <link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.css">
+        <link rel="stylesheet" type="text/css" href="<?=base_url().'lib/font-awesome/font-awesome.css'?>">
         <link rel="stylesheet" type="text/css" href="<?= base_url().'App/css/responsive.min.css'?>">
         <link rel="stylesheet" href="<?=base_url().'lib/alertify/alertify.css'?>">
         <link rel="stylesheet" href="<?=base_url().'lib/alertify/alertify.bootstrap.css'?>">

@@ -2,7 +2,8 @@ define(['mn',
     'collections/trading/searchProduct',
     'views/trading/productItemView',
     'text!templates/trading/product.html',
-], function(Mn,searchProductCol,itemView, template) {
+    'text!templates/trading/no-product.html'
+], function(Mn,searchProductCol,itemView, template,noProduct) {
 
     var ProductAppView = Mn.CompositeView.extend({
         childView: itemView,
@@ -11,16 +12,31 @@ define(['mn',
             var _this = this;
             this.des = option.des;
             this.filter = option.filter;
-            this.listenTo(this.collection,"change",this.render)
+            this.listenTo(this.collection,"change",this.render);
         },
-        template: function() {
-            return _.template(template)
+        template: function(obj) {
+            if(obj.collection.length>0){
+
+                return _.template(template)
+            }else{
+                return _.template(noProduct)
+            }
+        },
+        serializeData:function(){
+            return {
+                collection:this.collection
+            }
         },
         ui: {
             searchButton: "#searchButton",
+            newProduct:"#newProduct"
         },
         events: {
-            "click @ui.searchButton": "runSearch"
+            "click @ui.searchButton": "runSearch",
+            "click @ui.newProduct":"newInfo"
+        },
+        newInfo:function(e){
+            MMAPP.router.navigate("newInfo/?title=newInfo",{trigger:true})
         },
         runSearch: function() {
             var _this = this,

@@ -11,7 +11,30 @@ define(['mn',
             this.$el.html(preparedTemplate)
         },
         events:{
-            "click .has-sub>a":"toggleSub"
+            "click .has-sub>a":"toggleSub",
+            "click [data-des]":"routeTo"
+        },
+        routeTo:function(e){
+            $("#sidebar-collapse").trigger("click");
+            var des = $(e.currentTarget).data("des"),
+                filter = $(e.currentTarget).data("filter");
+            switch(des){
+                case "dashboard":
+                    MMAPP.router.navigate("",{trigger:true});
+                break;
+                case "garden":
+                case "seedling":
+                    MMAPP.router.navigate("trading/?des="+des+"?filter="+filter,{trigger:true});
+                break;
+                case "news":
+                    MMAPP.router.navigate("article/?title=article",{trigger:true});
+                break;
+                case "userCenter":
+                    MMAPP.router.navigate("userCenter/?title=my?filter="+filter+"?userId="+MMAPP.user.id,{trigger:true});
+                break;
+                case "userInfo":
+                    MMAPP.router.navigate("userInfo/?title=个人信息",{trigger:true});
+            }
         },
         toggleSub:function(e){
             var last = jQuery('.has-sub.open', $('.sidebar-menu'));

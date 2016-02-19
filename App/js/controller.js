@@ -4,7 +4,8 @@ define(['mn',
     'views/nav',
     'views/dashboard',
     'models/trading/product',
-], function(Mn, sessionModel, HeaderView, MenuView, DashboardView, ProductModel) {
+    'models/article/newsModel'
+], function(Mn, sessionModel, HeaderView, MenuView, DashboardView, ProductModel,ArticleModel) {
     Controller = Backbone.Marionette.Object.extend({
         views: [],
         initialize: function() {
@@ -47,7 +48,7 @@ define(['mn',
                 _this.loadMainView("views/trading/productAppView", option)
             })
         },
-        showProductDetail: function(title, ProductId) {
+        showProductDetail: function(title, ProductId,mode) {
             var _this = this,
                 productModel = new ProductModel();
             $.when(productModel.fetch({
@@ -61,14 +62,61 @@ define(['mn',
                     "ProductId": ProductId
                 })
             })).done(function(r1, r2) {
-
                 _this.loadMainView("views/trading/itemDetail", {
                     ProductId: ProductId,
+                    mode:mode,
                     model: productModel,
                     photoCollection: r2[0]
                 });
             })
 
+
+        },
+        showGardenLanding:function(){
+            this.loadMainView('views/trading/gardenLanding',{})
+        },
+        showNewInfo:function(){
+            this.loadMainView('views/newInfo',{})
+        },
+        showArticle:function(){
+            var _this = this;
+            this.loadCollection('collections/article/newsCollection').done(function(){
+                var option = {
+                    collection:_this.collection
+                }
+                _this.loadMainView('views/article/articleAppView',option)
+            })
+        },
+        showArticleDetail:function(title,ArticleId){
+            var _this= this,
+                articleModel = new ArticleModel();
+                articleModel.fetch({data:$.param({
+                    ArticleId:ArticleId
+                })}).done(function(){
+                    _this.loadMainView('views/article/articleDetail',{
+                        model:articleModel
+                    })
+                })
+        },
+        showUserPosts:function(title,filter,userId){
+            var _this = this;
+            this.loadCollection("collections/trading/product",{
+                "Type":filter,
+                "UserCreated":userId
+            }).done(function(){
+                 var option = {
+                    collection: _this.collection,
+                    type: filter
+                };
+                _this.loadMainView("views/user/userProductsView", option)
+            })
+        },
+        showPhotoMng:function(title,ProductId){
+            this.loadMainView("views/photoView",{
+                ProductId:ProductId
+            })
+        },
+        showUserInfo:function(){
 
         },
         loadCollection: function(link, option) {
@@ -90,7 +138,6 @@ define(['mn',
         },
         loadMainView: function(link, option) {
             option || (option = {});
-
             require([link], function(view) {
                 MMAPP.root.main.show(new view(option));
             })

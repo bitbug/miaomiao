@@ -11,6 +11,7 @@ class newsmodel extends CI_Model {
                 $this->db->where($filter);
                 $this->db->from('news');
                 $this->db->join('e_entity','e_entity.Id = news.Author');
+                $this->db->order_by("ArticleDateCreated",'desc');
 
                 $query = $this->db->get();
                 return $query->result_array();
@@ -25,5 +26,11 @@ class newsmodel extends CI_Model {
                 $query = $this->db->insert_id();
 
                 return $query;
+        }
+        public function getArticle($filter){
+                $this->db->where($filter);
+                $this->db->from('news');
+                $query = $this->db->get();
+                return $query->result_array();
         }
 }

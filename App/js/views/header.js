@@ -1,11 +1,10 @@
 define(['mn',
-    'slimScroll',
+
     'text!templates/header.html'
-], function(Mn, slimScroll, template) {
+], function(Mn,template) {
     var Header = Mn.ItemView.extend({
         className:"container",
-        initialize:function(option){
-            this.pos = option.pos;
+        initialize:function(){
             is_collapsed = true;
             is_mobile = ($(window).width()<=600)?true:false;
             if(is_mobile){
@@ -21,10 +20,17 @@ define(['mn',
             })
         },
         ui:{
-            menuButton:"#sidebar-collapse"
+            menuButton:"#sidebar-collapse",
+            backButton:"#backButton"
         },
         events:{
-            "click @ui.menuButton":"toggleMenu"
+            "click @ui.menuButton":"toggleMenu",
+            "click @ui.backButton":"goBack"
+        },
+        goBack:function(){
+            window.history.back();
+            window.location.href = window.location.href;
+            location.reload();
         },
         toggleMenu:function(){
             if(is_mobile){
@@ -36,7 +42,7 @@ define(['mn',
                     jQuery('body').addClass("slidebar");
                     jQuery('.sidebar').addClass("sidebar-fixed");
                     is_collapsed = true;
-                    this.handleMobileSidebar();
+
                 }
             }else{
                 var iconElem = document.getElementById("sidebar-collapse").querySelector('[class*="fa-"]');
@@ -71,24 +77,6 @@ define(['mn',
                     e.stopPropagation();
                 });
             }
-        },
-        handleMobileSidebar:function(){
-             var menu = $('.sidebar');
-        if (menu.parent('.slimScrollDiv').size() === 1) { // destroy existing instance before updating the height
-            menu.slimScroll({
-                destroy: true
-            });
-            menu.removeAttr('style');
-            $('#sidebar').removeAttr('style');
-        }
-        menu.slimScroll({
-            size: '7px',
-            color: '#a1b2bd',
-            opacity: .3,
-            height: "100%",
-            allowPageScroll: false,
-            disableFadeOut: false
-        });
         }
 
     })
