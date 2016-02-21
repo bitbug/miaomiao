@@ -16,6 +16,7 @@ require.config({
         underscore: '/miaomiao/lib/loDash',
         backbone: '/miaomiao/lib/backbone',
         footable: '/miaomiao/lib/footable/js/footable',
+        cookie:'/miaomiao/lib/cookie/jquery.cookie',
         fuse: '/miaomiao/lib/fuse/fuse.min',
         mn: '/miaomiao/lib/backbone.marionette',
         moment: '/miaomiao/lib/moment/moment',

@@ -33,7 +33,7 @@ define(['mn',
                     MMAPP.router.navigate("userCenter/?title=my?filter="+filter+"?userId="+MMAPP.user.id,{trigger:true});
                 break;
                 case "userInfo":
-                    MMAPP.router.navigate("userInfo/?title=个人信息",{trigger:true});
+                    MMAPP.router.navigate("userInfo/?title=userInfo",{trigger:true});
             }
         },
         toggleSub:function(e){

@@ -1,0 +1,65 @@
+<style>
+    .mainContainer{
+        margin-left:0px;
+        margin-right:0px;
+        padding:15px;
+    }
+    .mainContainer .btn{
+        width:100%;
+        margin-bottom:15px;
+    }
+</style>
+<div class="row mainContainer">
+    <div class="panel">
+        <div class="panel-body">
+            <form action="" class="container-fluid" id="itemForm">
+                <div class="row">
+                    <div class="from-group col-md-6 col-sm-6">
+                        <label for="">微信号</label>
+                        <input name="WechatID" class="form-control" type="text" value="<%=model.get('WechatID')%>" disabled="true">
+                    </div>
+                    <div class="form-group col-md-6 col-sm-6">
+                        <label for="">用户名</label>
+                        <input name="UserName" class="form-control" type="text" value="<%=model.get('UserName')%>" disabled="true">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-6 col-sm-6">
+                        <label for="">真实姓名</label>
+                        <input name="RealName" class="form-control" type="text" value="<%=model.get('RealName')%>">
+                    </div>
+                    <div class="form-group col-md-6 col-sm-6">
+                        <label for="">会员等级</label>
+                        <select name="Membership" class="form-control" disabled="true">
+                            <option value="0" <%=model.get("Membership")==0?"selected":""%>>无</option>
+                            <option value="1" <%=model.get("Membership")==1?"selected":""%>>普通会员</option>
+                            <option value="2" <%=model.get("Membership")==2?"selected":""%>>牡丹会员</option>
+                            <option value="3" <%=model.get("Membership")==3?"selected":""%>>银杏会员</option>
+                            <option value="4" <%=model.get("Membership")==4?"selected":""%>>VIP会员</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-6 col-sm-6">
+                        <label for="">手机</label>
+                        <input name="PhoneNumber" class="form-control" type="text" value="<%=model.get('PhoneNumber')%>">
+                    </div>
+                    <div class="form-group col-md-6 col-sm-6">
+                        <label for="">邮箱</label>
+                        <input name="Email" class="form-control" type="text" value="<%=model.get('Email')%>">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-12 col-sm-12">
+                        <label for="">地址</label>
+                        <input name="Address" type="text" class="form-control" value="<%=model.get("Address")%>">
+                    </div>
+                </div>
+                
+            </form>
+        </div>
+    </div>
+        <button type="submit" id="change" class="btn btn-primary col-md-12 col-sm-12">保存修改</button>
+        <button id="upgrade" class="btn btn-success col-md-12 col-sm-12">升级会员</button>
+
+</div>

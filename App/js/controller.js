@@ -70,7 +70,6 @@ define(['mn',
                 });
             })
 
-
         },
         showGardenLanding:function(){
             this.loadMainView('views/trading/gardenLanding',{})
@@ -117,7 +116,10 @@ define(['mn',
             })
         },
         showUserInfo:function(){
-
+            this.loadMainView("views/user/userInfo");
+        },
+        membershipMng:function(){
+            this.loadMainView("views/user/membershipView");
         },
         loadCollection: function(link, option) {
             var _this = this,

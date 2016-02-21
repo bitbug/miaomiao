@@ -3,7 +3,7 @@ define(['jquery',
     'backbone'
 ], function($, _, Backbone) {
     var SessionModel = Backbone.Model.extend({
-        url: "/miaomiao/index.php/User/user",
+        url: "./index.php/User/user",
         idAttribute: "Id"
     })
 

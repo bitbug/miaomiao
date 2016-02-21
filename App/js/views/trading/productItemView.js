@@ -13,7 +13,7 @@ define(['mn',
         },
         onRender: function(option) {
             var model = option.model;
-            if (model.get("DateVoid")) {
+            if (model.get("DateVoid")||model.get("UserCreated")==MMAPP.user.id) {
                 this.$el.hide()
             } else {
                 this.$el.show()

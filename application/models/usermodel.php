@@ -22,6 +22,7 @@ class usermodel extends CI_Model {
         public function getUserInfo($data){
                 $this->db->where($data);
                 $this->db->from('e_entity');
+                $this->db->join('t_membership','e_entity.Membership=t_membership.Level');
 
                 $query=$this->db->get();
                 return $query->result_array();

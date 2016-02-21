@@ -9,6 +9,7 @@ class productmodel extends CI_Model {
         public function getProductById($data){
             $this->db->where($data);
             $this->db->from('e_listing');
+            $this->db->join('e_entity','e_entity.Id=e_listing.UserCreated');
             $query = $this->db->get();
 
             return $query->result_array();

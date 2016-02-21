@@ -3,8 +3,9 @@ define(['mn',
     'text!templates/trading/editItem.html',
     'alertify',
     'moment',
-    'bootstrap'
-], function(Mn, template,editTemplate,alertify, moment,bootstrap) {
+    'bootstrap',
+    'cookie'
+], function(Mn, template,editTemplate,alertify, moment,bootstrap,cookie) {
     var ItemDetailView = Mn.ItemView.extend({
         initialize: function(option) {
             this.ProductId = option.ProductId;
@@ -39,7 +40,30 @@ define(['mn',
         events:{
             "click #update":"changeRecord",
             "click #delete":"deleteRecord",
-            "click #photoManager":"routeToPhoto"
+            "click #photoManager":"routeToPhoto",
+            "click #contact":"contactSeller"
+        },
+        contactSeller:function(){
+            //$.cookie('viewCount', '', { expires: -1 });
+            var phoneNumber = this.model.get("PhoneNumber")
+            if(MMAPP.user.get("LimitTimes")){
+                //if counter doesn't exist, create one
+                if(!$.cookie("viewCount")){
+                    $.cookie("viewCount",0,{expires: 1, path: '/'})
+                }
+
+                //if less than the limit, alert the phone number
+                if($.cookie("viewCount") < MMAPP.user.get("LimitTimes")){
+                    alertify.alert(phoneNumber);
+                    $.cookie("viewCount",Number($.cookie("viewCount"))+1);
+
+                }else{
+                    alertify.alert("已经超过今日查看次数，请升级会员")
+                }
+
+            }else{
+                alertify.alert(phoneNumber)
+            }
         },
         routeToPhoto:function(){
             MMAPP.router.navigate("photoManager/?title=photoManager?productId="+this.model.id,{trigger:true})

@@ -1,0 +1,14 @@
+<div class="row" style="margin-top:15px;margin-left:15px;margin-right:15px">
+	<%collection.forEach(function(mem){%>
+		<div class="col-xs-12">
+			<div class="panel memOption" data-level="<%=mem.Level%>">
+				<div class="panel-body">
+					<p><strong><%=mem.RoleName%></strong></p>
+					<p><strong>月费:</strong>&nbsp<span><%=mem.MonthFee%></span></p>
+					<p><strong>年费:</strong>&nbsp<span><%=mem.YearFee%></span></p>
+
+				</div>
+			</div>
+		</div>
+	<%})%>
+</div>

@@ -7,7 +7,7 @@ require.config({
     waitSeconds: 60,
     map: {
         '*': {
-            'css': '/miaomiao/lib/css' // or whatever the path to require-css is
+            'css': '/miaomiao/lib/css.js' // or whatever the path to require-css is
         }
     },
     paths: {

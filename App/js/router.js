@@ -12,7 +12,8 @@ define(['mn',
             "articleDetail/?title=:title?Id=:id":"showArticleDetail",
             "userCenter/?title=:title?filter=:filter?userId=:id":"showUserPosts",
             "userInfo/?title=:title":"showUserInfo",
-            "photoManager/?title=:title?productId=:id":"showPhotoMng"
+            "photoManager/?title=:title?productId=:id":"showPhotoMng",
+            "membership/?title=:membership":"membershipMng",
                 // "membership":"showSetting",
                 // "users":"showUserList",
                 // "article":"showArticle"
@@ -50,7 +51,8 @@ define(['mn',
                 "ProductEdit":"编辑商品",
                 "newInfo":"发布信息",
                 "newsDetail":"文章内容",
-                "photoManager":"照片管理"
+                "photoManager":"照片管理",
+                "userInfo":"个人信息",
             };
             return enToCh[phrase];
         }
