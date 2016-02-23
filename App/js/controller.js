@@ -121,6 +121,18 @@ define(['mn',
         membershipMng:function(){
             this.loadMainView("views/user/membershipView");
         },
+        showQuotings:function(title, RelateProduct){
+            var _this = this
+            this.loadCollection("collections/trading/product",{
+                "RelateProduct":RelateProduct
+            }).done(function(){
+                var option = {
+                    collection:_this.collection,
+                    RelateProduct:RelateProduct
+                }
+                _this.loadMainView("views/trading/productAppView",option)
+            })
+        },
         loadCollection: function(link, option) {
             var _this = this,
                 def = $.Deferred();

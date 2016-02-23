@@ -41,7 +41,34 @@ define(['mn',
             "click #update":"changeRecord",
             "click #delete":"deleteRecord",
             "click #photoManager":"routeToPhoto",
-            "click #contact":"contactSeller"
+            "click #contact":"contactSeller",
+            "click #makeQuote":"makeQuote",
+            "click #checkQuoting":"checkQuoting"
+        },
+        checkQuoting:function(){
+           MMAPP.router.navigate("quotingList/?title=quoting/?ProductId="+this.model.id,{trigger:true}) 
+        },
+        makeQuote:function(){
+            var _this=  this
+            alertify.prompt("输入报价金额",function(e,price){
+                if(e){
+                    var postData = _this.model.toJSON();
+                    //reset info
+                    postData["UserCreated"]= MMAPP.user.id;
+                    postData["Type"]="quoting";
+                    postData["Price"] = price;
+                    postData["RelateProduct"]=postData["ProductId"];
+
+                    $.ajax({
+                        url:"./index.php/Products/product",
+                        type:"post",
+                        data:postData
+                    }).done(function(){
+                        alertify.alert("报价成功")
+                    })
+
+                }          
+            })
         },
         contactSeller:function(){
             //$.cookie('viewCount', '', { expires: -1 });

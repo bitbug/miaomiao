@@ -12,11 +12,11 @@ define(['mn',
             var _this = this;
             this.des = option.des;
             this.filter = option.filter;
+            this.RelateProduct = option.RelateProduct;
             this.listenTo(this.collection,"change",this.render);
         },
         template: function(obj) {
             if(obj.collection.length>0){
-
                 return _.template(template)
             }else{
                 return _.template(noProduct)

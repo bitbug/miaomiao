@@ -74,8 +74,10 @@
 </form>
         </div>
     </div>    
-
-        <button id="update" class="btn btn-success update">修改信息</button>
+        <%if(model.get("Type")=="buying"){%>
+        <button id="checkQuoting" class="btn btn-primary">查看报价</button>
+        <%}%>
+        <button id="update" class="btn btn-success">修改信息</button>
         <button id="photoManager" class="btn btn-info">管理图片</button>
         <button id="delete" class="btn btn-danger">删除信息</button>
 

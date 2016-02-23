@@ -63,7 +63,8 @@ class Products extends REST_Controller {
                 "Type"=>$this->post("Type"),
                 "Unit"=> $this->post("Unit"),
                 "ProductDateCreated"=>$this->post("ProductDateCreated"),
-                "UserCreated"=>$this->post("UserCreated")
+                "UserCreated"=>$this->post("UserCreated"),
+                "RelateProduct"=>$this->post("RelateProduct")
                 );
             $result = $this->productmodel->createProduct($data);
             if($result){

@@ -112,7 +112,16 @@
                     </div>
                 </div>
                 <div class="col-xs-12" style="margin-bottom:10px;padding:0px">
+                    <%switch(model.get("Type")){
+                        case "selling":
+                        case "quoting": %>
                             <button id="contact" style="width:100%"id="change" class="btn btn-success col-md-12 col-sm-12">联系卖家</button>
+                        <%break;
+                        case "buying": %>
+                            <button id="makeQuote" style="width:100%"id="change" class="btn btn-success col-md-12 col-sm-12">报价</button>
+                        <%break;
+                        }%>
+                            
                 </div>
             </div>
         </div>
