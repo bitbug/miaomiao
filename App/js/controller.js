@@ -31,7 +31,7 @@ define(['mn',
                 subEndDate = MMAPP.user.get("SubEndDate");
 
             if(subEndDate&&moment(subEndDate).isBefore(today)){
-                MMAPP.user.save({"Membership":0})
+                MMAPP.user.save({"Membership":0,"SubEndDate":""})
             }
         },
         showHeader: function(option) {

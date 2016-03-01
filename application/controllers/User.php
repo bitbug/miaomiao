@@ -41,7 +41,7 @@ class User extends REST_Controller {
             $Email = $this->put("Email");
             $Address = $this->put("Address");
             $UserDateVoid = $this->put("UserDateVoid");
-            $SubEndDate = $this->put("SubEndDate");
+            $SubEndDate = ($this->put("SubEndDate")=="")?NULL:$this->put("SubEndDate")=="";
             $data=array(
                 "RealName"=>$RealName,
                 "Membership"=>$Membership,
