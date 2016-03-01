@@ -24,7 +24,8 @@ define(['mn',
                 break;
                 case "edit":
                 return _.template(editTemplate,{
-                    model:object.model
+                    model:object.model,
+                    specListBuilder:object.specListBuilder
                 })
             }
 
@@ -34,8 +35,51 @@ define(['mn',
                 model: this.model,
                 photoCollection: this.photoCollection,
                 basurl:MMAPP.basePhotoPath,
-                mode:this.mode
+                mode:this.mode,
+                specListBuilder:this.specListBuilder
             }
+        },
+        specListBuilder:function(){
+            var lists = '',
+                _this = this;
+            if(this.model.get("DiJin")){
+                lists +='<li class="spec" style="overflow:hidden"><div style="width:48%" class="pull-left"><p>地径</p></div><div style="width:48%" class="valueContainer pull-right input-group"><input typxe="text" class="form-control" value="'+this.model.get("DiJin")+'" name="DiJin"><span class="input-group-addon specUnit">cm</span></div><span class="pull-right"><i class="fa fa-icon-minus-sign "></i></span></li>'
+            };
+            if(this.model.get("MiJin")){
+                lists +='<li class="spec" style="overflow:hidden"><div style="width:48%" class="pull-left"><p>米径</p></div><div style="width:48%" class="valueContainer pull-right input-group"><input typxe="text" class="form-control" value="'+this.model.get("MiJin")+'" name="MiJin"><span class="input-group-addon specUnit">cm</span></div></li>'
+            };
+            if(this.model.get("XiongJin")){
+                lists +='<li class="spec" style="overflow:hidden"><div style="width:48%" class="pull-left"><p>胸径</p></div><div style="width:48%" class="valueContainer pull-right input-group"><input typxe="text" class="form-control" value="'+this.model.get("DiJin")+'" name="XiongJin"><span class="input-group-addon specUnit">cm</span></div></li>'
+            };
+            if(this.model.get("GuanFu")){
+                lists +='<li class="spec" style="overflow:hidden"><div style="width:48%" class="pull-left"><p>冠幅</p></div><div style="width:48%" class="valueContainer pull-right input-group"><input typxe="text" class="form-control" value="'+this.model.get("GuanFu")+'" name="GuanFu"><span class="input-group-addon specUnit">cm</span></div></li>'
+            };
+            if(this.model.get("GaoDu")){
+                lists +='<li class="spec" style="overflow:hidden"><div style="width:48%" class="pull-left"><p>高度</p></div><div style="width:48%" class="valueContainer pull-right input-group"><input typxe="text" class="form-control" value="'+this.model.get("GaoDu")+'" name="GaoDu"><span class="input-group-addon specUnit">cm</span></div></li>'
+            };
+            if(this.model.get("TuQiu")){
+                lists +='<li class="spec" style="overflow:hidden"><div style="width:48%" class="pull-left"><p>土球</p></div><div style="width:48%" class="valueContainer pull-right input-group"><input typxe="text" class="form-control" value="'+this.model.get("TuQiu")+'" name="TuQiu"><span class="input-group-addon specUnit">cm</span></div></li>'
+            };
+            if(this.model.get("TiaoChang")){
+                lists +='<li class="spec" style="overflow:hidden"><div style="width:48%" class="pull-left"><p>条长</p></div><div style="width:48%" class="valueContainer pull-right input-group"><input typxe="text" class="form-control" value="'+this.model.get("TiaoChang")+'" name="TiaoChang"><span class="input-group-addon specUnit">cm</span></div></li>'
+            };
+            if(this.model.get("ShuLing")){
+                lists +='<li class="spec" style="overflow:hidden"><div style="width:48%" class="pull-left"><p>树龄</p></div><div style="width:48%" class="valueContainer pull-right input-group"><input typxe="text" class="form-control" value="'+this.model.get("ShuLing")+'" name="ShuLing"><span class="input-group-addon specUnit">年</span></div></li>'
+            };
+            if(this.model.get("FenZhi")){
+                lists +='<li class="spec" style="overflow:hidden"><div style="width:48%" class="pull-left"><p>分支</p></div><div style="width:48%" class="valueContainer pull-right input-group"><input typxe="text" class="form-control" value="'+this.model.get("FenZhi")+'" name="FenZhi"><span class="input-group-addon specUnit">个</span></div></li>'
+            };
+            if(this.model.get("FenZhiDian")){
+                lists +='<li class="spec" style="overflow:hidden"><div style="width:48%" class="pull-left"><p>分支点</p></div><div style="width:48%" class="valueContainer pull-right input-group"><input typxe="text" class="form-control" value="'+this.model.get("FenZhiDian")+'" name="FenZhiDian"><span class="input-group-addon specUnit">m</span></div></li>'
+            };
+            if(this.model.get("Mao")){
+                lists +='<li class="spec" style="overflow:hidden"><div style="width:48%" class="pull-left"><p>帽</p></div><div style="width:48%" class="valueContainer pull-right"><select class="form-control" name="Mao"><option value="year">年帽</option><option value="full">全冠</option><option value="half">半冠</option></select></div></li>'
+                 $(lists).find("option[value='"+this.model.get("Mao")+"']").selected = true
+
+            };
+
+            return lists
+
         },
         events:{
             "click #update":"changeRecord",
@@ -43,7 +87,42 @@ define(['mn',
             "click #photoManager":"routeToPhoto",
             "click #contact":"contactSeller",
             "click #makeQuote":"makeQuote",
-            "click #checkQuoting":"checkQuoting"
+            "click #checkQuoting":"checkQuoting",
+            "click #addSpec":"anotherSpec",
+            "change .spec":"changeUnit"
+        },
+        changeUnit:function(e){
+            var $li = $(e.currentTarget).parents("li.spec"),
+                $input = $li.find(".valueContainer");
+            $input.html("<input typxe='text' class='form-control' name='"+$(e.currentTarget).val()+"'><span class='input-group-addon specUnit'>cm</span>");
+            switch($(e.currentTarget).val()){
+                case "DiJin":
+                case "MiJin":
+                case "XiongJin":
+                case "GuanFu":
+                case "GaoDu":
+                case "TuQiu":
+                case "TiaoChang":
+                    $input.find(".specUnit").text("cm");
+                break;
+                case "ShuLing":
+                    $input.find(".specUnit").text("年");
+                break;
+                case "FenZhi":
+                    $input.find(".specUnit").text("个");
+                break;
+                case "FenZhiDian":
+                    $input.find(".specUnit").text("m");
+                 break;
+                case "Mao":
+                    $input.html("<select class='form-control' name='Mao'><option value='year'>年帽</option><option value='full'>全冠</option><option value='half'>半冠</option></select>");
+                break;
+            };
+        },
+        anotherSpec:function(){
+            var $newSpec = $("#specs li:last-child").clone();
+            $newSpec.find("input").val("");
+            $("#specs").append($newSpec)
         },
         checkQuoting:function(){
            MMAPP.router.navigate("quotingList/?title=quoting/?ProductId="+this.model.id,{trigger:true}) 
@@ -96,10 +175,20 @@ define(['mn',
             MMAPP.router.navigate("photoManager/?title=photoManager?productId="+this.model.id,{trigger:true})
         },
         changeRecord: function(e) {
-            console.log("triggered")
+
             e.preventDefault();
             var _this = this,
+                specInfo = {},
                 formData = $("#itemForm").serializeObject();
+            this.$el.find(".valueContainer").each(function(index,container){
+                if($(container).find("input").length>0){
+                    _.extend(specInfo,$(container).find("input").serializeObject());
+                }else{
+                    _.extend(specInfo,$(container).find("select").serializeObject());
+                }
+
+            });
+            _.extend(formData,specInfo);
             this.model.save(formData, {
                 success: function() {
                     alertify.set({

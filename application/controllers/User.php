@@ -41,13 +41,15 @@ class User extends REST_Controller {
             $Email = $this->put("Email");
             $Address = $this->put("Address");
             $UserDateVoid = $this->put("UserDateVoid");
+            $SubEndDate = $this->put("SubEndDate");
             $data=array(
                 "RealName"=>$RealName,
                 "Membership"=>$Membership,
                 "PhoneNumber"=>$PhoneNumber,
                 "Email"=>$Email,
                 "Address"=>$Address,
-                "UserDateVoid"=>$UserDateVoid
+                "UserDateVoid"=>$UserDateVoid,
+                "SubEndDate"=>$SubEndDate
                 );
             $this->load->model("usermodel");
             $result = $this->usermodel->updateUser($data,$Id);

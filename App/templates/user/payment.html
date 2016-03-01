@@ -8,6 +8,6 @@
 	<ul>
 		<%=helper(model.Intro)%>
 	</ul>
-	<button class="btn btn-success">按月充值 (<%=model.MonthFee%>元)</button>
-	<button class="btn btn-info">按年充值 (<%=model.YearFee%>元)</button>
+	<button data-duration="month" class="pay btn btn-success">按月充值 (<%=model.MonthFee%>元)</button>
+	<button data-duration="year" class="pay btn btn-info">按年充值 (<%=model.YearFee%>元)</button>
 </div>

@@ -4,8 +4,9 @@ define(['mn',
     'views/nav',
     'views/dashboard',
     'models/trading/product',
-    'models/article/newsModel'
-], function(Mn, sessionModel, HeaderView, MenuView, DashboardView, ProductModel,ArticleModel) {
+    'models/article/newsModel',
+    'moment'
+], function(Mn, sessionModel, HeaderView, MenuView, DashboardView, ProductModel,ArticleModel,moment) {
     Controller = Backbone.Marionette.Object.extend({
         views: [],
         initialize: function() {
@@ -21,8 +22,17 @@ define(['mn',
                 _this.showHeader();
                 _this.showMenu();
                 _this.showDashboard();
+                _this.checkMembership()
 
             });
+        },
+        checkMembership:function(){
+            var today = moment().format(),
+                subEndDate = MMAPP.user.get("SubEndDate");
+
+            if(subEndDate&&moment(subEndDate).isBefore(today)){
+                MMAPP.user.save({"Membership":0})
+            }
         },
         showHeader: function(option) {
             MMAPP.root.showChildView('header', new HeaderView());

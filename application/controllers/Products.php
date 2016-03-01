@@ -41,7 +41,18 @@ class Products extends REST_Controller {
                         "Location"=>$Location,
                         "LocationUni"=>$LocationUni,
                         "Description"=>$Description,
-                        "DateVoid"=>$DateVoid
+                        "DateVoid"=>$DateVoid,
+                        "DiJin"=>$this->put("DiJin"),
+                        "MiJin"=>$this->put("MiJin"),
+                        "XiongJin"=>$this->put("XiongJin"),
+                        "GuanFu"=>$this->put("GuanFu"),
+                        "GaoDu"=>$this->put("GaoDu"),
+                        "FenZhi"=>$this->put("FenZhi"),
+                        "TuQiu"=>$this->put("TuQiu"),
+                        "TiaoChang"=>$this->put("TiaoChang"),
+                        "ShuLing"=>$this->put("ShuLing"),
+                        "FenZhiDian"=>$this->put("FenZhiDian"),
+                        "Mao"=>$this->put("Mao")
                         );
                 $result = $this->productmodel->updateProductItem($data,$Id);
                 if($result){
@@ -64,7 +75,18 @@ class Products extends REST_Controller {
                 "Unit"=> $this->post("Unit"),
                 "ProductDateCreated"=>$this->post("ProductDateCreated"),
                 "UserCreated"=>$this->post("UserCreated"),
-                "RelateProduct"=>$this->post("RelateProduct")
+                "RelateProduct"=>$this->post("RelateProduct"),
+                "DiJin"=>$this->post("DiJin"),
+                "MiJin"=>$this->post("MiJin"),
+                "XiongJin"=>$this->post("XiongJin"),
+                "GuanFu"=>$this->post("GuanFu"),
+                "GaoDu"=>$this->post("GaoDu"),
+                "FenZhi"=>$this->post("FenZhi"),
+                "TuQiu"=>$this->post("TuQiu"),
+                "TiaoChang"=>$this->post("TiaoChang"),
+                "ShuLing"=>$this->post("ShuLing"),
+                "FenZhiDian"=>$this->post("FenZhiDian"),
+                "Mao"=>$this->post("Mao")
                 );
             $result = $this->productmodel->createProduct($data);
             if($result){
@@ -138,7 +160,18 @@ class Products extends REST_Controller {
                         "Location"=>$Location,
                         "LocationUni"=>$LocationUni,
                         "Description"=>$Description,
-                        "DateVoid"=>$DateVoid
+                        "DateVoid"=>$DateVoid,
+                        "DiJin"=>$this->put("DiJin"),
+                        "MiJin"=>$this->put("MiJin"),
+                        "XiongJin"=>$this->put("XiongJin"),
+                        "GuanFu"=>$this->put("GuanFu"),
+                        "GaoDu"=>$this->put("GaoDu"),
+                        "FenZhi"=>$this->put("FenZhi"),
+                        "TuQiu"=>$this->put("TuQiu"),
+                        "TiaoChang"=>$this->put("TiaoChang"),
+                        "ShuLing"=>$this->put("ShuLing"),
+                        "FenZhiDian"=>$this->put("FenZhiDian"),
+                        "Mao"=>$this->put("Mao")
                         );
                 $result = $this->productmodel->updateProductItem($data,$Id);
                 if($result){

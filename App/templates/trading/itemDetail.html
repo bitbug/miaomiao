@@ -25,6 +25,9 @@
     padding-top:10px;
     border-bottom: 1px solid #eee
 }
+.detailinfo>li>p{
+    margin:0px;
+}
 </style>
 <div class="row">
     <div id="content" class="col-lg-12">
@@ -96,6 +99,42 @@
                                 <li>
                                     <label for="">地点</label>
                                     &nbsp<span><%=model.get('Location')%></span>
+                                </li>
+                                <li>
+                                    <label for="">规格</label>
+                                    <%if(model.get('DiJin')){%>
+                                        <p>地径：<%=model.get('DiJin')%>&nbsp cm</p>
+                                    <%}%>
+                                    <%if(model.get('MiJin')){%>     
+                                        <p>米径：<%=model.get('MiJin')%>&nbsp cm</p>
+                                    <%}%>
+                                    <%if(model.get('XiongJin')){%>     
+                                        <p>胸径：<%=model.get('XiongJin')%>&nbsp cm</p>
+                                    <%}%>
+                                    <%if(model.get('GuanFu')){%>     
+                                        <p>冠幅：<%=model.get('GuanFu')%>&nbsp cm</p>
+                                    <%}%>
+                                    <%if(model.get('GaoDu')){%>     
+                                        <p>高度：<%=model.get('GaoDu')%>&nbsp cm</p>
+                                    <%}%>
+                                    <%if(model.get('FenZhi')){%>     
+                                        <p>分支：<%=model.get('FenZhi')%>&nbsp 个</p>
+                                    <%}%>
+                                    <%if(model.get('TuQiu')){%>     
+                                        <p>土球：<%=model.get('TuQiu')%>&nbsp cm</p>
+                                    <%}%>
+                                    <%if(model.get('TiaoChang')){%>     
+                                        <p>条长：<%=model.get('TiaoChang')%>&nbsp cm</p>
+                                    <%}%>
+                                    <%if(model.get('ShuLing')){%>     
+                                        <p>树龄：<%=model.get('ShuLing')%>&nbsp 年</p>
+                                    <%}%>
+                                    <%if(model.get('FenZhiDian')){%>     
+                                        <p>分支点：<%=model.get('FenZhiDian')%>&nbsp 个</p>
+                                    <%}%>
+                                    <%if(model.get('Mao')){%>     
+                                        <p>帽：<%=model.get('Mao')%></p>
+                                    <%}%>
                                 </li>
                                 <li>
                                     <label for="">详情</label>

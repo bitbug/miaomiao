@@ -1,6 +1,7 @@
 define(['mn',
     'text!templates/user/payment.html',
-], function(Mn,template) {
+    'moment'
+], function(Mn,template,moment) {
     var MembershipView = Backbone.View.extend({
         initialize: function(option) {
            this.model = option.model;
@@ -21,6 +22,23 @@ define(['mn',
             })
             return ulContent
 
+        },
+        subscripe:function(e){
+            var SubEndDate,
+                duration = $(e.currentTarget).data("duration")
+            if(duration=="month"){
+                SubEndDate = moment().add(1,"M").format()
+            }else{
+                SubEndDate = moment().add(1,"y").format()
+            }
+            MMAPP.user.save({"SubEndDate":SubEndDate,
+                            "Membership":this.model.Level
+                            },{success:function(r){
+                MMAPP.modal.close();
+            }})
+        },
+        events:{
+          "click .pay":"subscripe",
         }
     })
 

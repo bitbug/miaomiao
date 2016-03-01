@@ -7,6 +7,10 @@
     #create{
         width:100%;
     }
+    #specs{
+        list-style-type: none;
+        padding:0px;
+    }
 </style>
 <div class="row mainContainer">
     <div class="panel">
@@ -71,6 +75,35 @@
     </div>
 
 </form>
+<div class="row">
+        <div class="form-group col-md-12 col-sm-12 clearfix">
+            <label for="">规格</label>
+            <ul id="specs">
+                <li class="spec" style="overflow:hidden">
+                    <div style="width:48%" class="pull-left">
+                    <select name="spec" class="form-control spec">
+                        <option value="DiJin">地径</option>
+                        <option value="MiJin">米径</option>
+                        <option value="XiongJin">胸径</option>
+                        <option value="GuanFu">冠幅</option>
+                        <option value="GaoDu">高度</option>
+                        <option value="FenZhi">分支</option>
+                        <option value="TuQiu">土球</option>
+                        <option value="TiaoChang">条长</option>
+                        <option value="ShuLing">树龄</option>
+                        <option value="FenZhiDian">分支点</option>
+                        <option value="Mao">帽</option>
+                    </select>
+                    </div>
+                    <div style="width:48%" class="valueContainer pull-right input-group">  
+                        <input typxe="text" class="form-control" name="DiJin">
+                        <span class="input-group-addon specUnit">cm</span>
+                    </div>
+                </li>
+            </ul>
+            <a id="addSpec" class="pull-right">+添加规格</a>
+        </div>
+    </div>
         </div>
     </div>    
 

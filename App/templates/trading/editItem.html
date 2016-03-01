@@ -72,6 +72,15 @@
     </div>
 
 </form>
+<div class="row">
+        <div class="form-group col-md-12 col-sm-12 clearfix">
+            <label for="">规格</label>
+            <ul id="specs" style="list-style-type:none;padding:0px">
+                <%=specListBuilder()%>
+            </ul>
+            <a id="addSpec" class="pull-right">+添加规格</a>
+        </div>
+    </div>
         </div>
     </div>    
         <%if(model.get("Type")=="buying"){%>
