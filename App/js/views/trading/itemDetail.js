@@ -27,6 +27,7 @@ define(['mn',
                     model:object.model,
                     specListBuilder:object.specListBuilder
                 })
+                break;
             }
 
         },

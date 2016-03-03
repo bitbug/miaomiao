@@ -25,6 +25,7 @@ define(['mn',
                 break;
                 case "seedling":
                     MMAPP.router.navigate("trading/?des="+des+"?filter="+filter,{trigger:true});
+                break;
                 case "garden":
                     MMAPP.router.navigate("landing/?des="+des,{trigger:true});
                 break;

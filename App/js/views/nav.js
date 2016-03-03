@@ -34,6 +34,7 @@ define(['mn',
                 break;
                 case "userInfo":
                     MMAPP.router.navigate("userInfo/?title=userInfo",{trigger:true});
+                break;
             }
         },
         toggleSub:function(e){
